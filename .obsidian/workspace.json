@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "4860ab3e472283e6",
+        "id": "642a1bf6270dd5aa",
         "type": "tabs",
         "children": [
           {
-            "id": "86a8e12c91d4c765",
+            "id": "75d446d70a4311be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_Memory/Technical/Tools/Obsidian/20251113_Obsidianのグラフビュー.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Cases/00-NTTDX案件マスター.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "20251113_Obsidianのグラフビュー"
+              "title": "00-NTTDX案件マスター"
             }
           }
         ]
@@ -63,8 +63,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#リンク戦略",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -180,8 +180,8 @@
             "state": {
               "type": "calendar",
               "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
+              "icon": "lucide-ghost",
+              "title": "calendar"
             }
           }
         ]
@@ -193,62 +193,62 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-excalidraw-plugin:New drawing": false,
       "switcher:クイックスイッチャーを開く": false,
       "graph:グラフビューを開く": false,
       "canvas:新規キャンバスを作成": false,
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
+      "obsidian-kanban:カンバンボードを新規作成": false,
       "bases:Create new base": false,
-      "obsidian-kanban:カンバンボードを新規作成": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "86a8e12c91d4c765",
+  "active": "d1727ce017af2932",
   "lastOpenFiles": [
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/layout/Footer.tsx",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/sections/Features.tsx",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/layout/Navigation.tsx",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/layout",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/providers/ThemeProvider.tsx",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/src/components/providers",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/MONGODB_SETUP.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/index.d.ts",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/package.json",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/src/v4/core/tests/locales/ru.test.ts",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/src/v4/core/tests/locales/tr.test.ts",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/zod/src/v4/core/tests/locales/be.test.ts",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mongodb-js/saslprep/readme.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@popperjs/core/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@popperjs/core/LICENSE.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@types/react-transition-group/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@hookform/resolvers/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/material/node_modules/react-is/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/utils/node_modules/react-is/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/material/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/material/CHANGELOG.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/utils/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/utils/CHANGELOG.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/system/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/system/CHANGELOG.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/types/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/styled-engine/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/styled-engine/CHANGELOG.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/private-theming/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/private-theming/CHANGELOG.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@mui/core-downloads-tracker/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@babel/runtime/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@emotion/babel-plugin/node_modules/convert-source-map/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@emotion/weak-memoize/README.md",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/node_modules/@emotion/use-insertion-effect-with-fallbacks/README.md",
+    "2025-11-19.md",
+    "00_Memo/アプリアイデアメモ.md",
+    "00_Memo/cybouz",
+    "01_Inbox/2025-11-25-長野案件-社内相談内容.md",
+    "01_Inbox/2025-11-25-長野案件-データベース構築-提案案整理.md",
+    "00_Memo/2025-11-25-長野案件-データベース構築.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/00-プロジェクト概要.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-Jリーグサッカー.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-Bリーグバスケットボール.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-プロ野球.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソンシナリオ素案.md",
+    "00_Memo/soccer_data_definition (1).xlsx",
+    "soccer_data_definition (1).xlsx",
+    "02_Daily/2025/2025-11/2025-11-25/2025-11-25-TODO.md",
+    "02_Daily/2025/2025-11/2025-11-25/2025-11-25-Daily.md",
+    "02_Daily/2025/2025-11/2025-11-25",
+    "99_Archive/20251119_Xリンク調査メモ.md",
+    "99_Archive/20251118_Xリンク調査メモ.md",
+    "03_Input/リンクストック-あとで読む.md",
+    "99_Archive/20251121memo",
+    "99_Archive/2025-11-19.md",
+    "01_Inbox/20251121_札幌市案件-アイデアソン準備メモ.md",
+    "01_Inbox/20251119_Xリンク調査メモ.md",
+    "00_Memo/2025-11-19.md",
+    "00_Memo/20251121memo",
+    "05_Output/Projects/@Active/NTTDX-Tokyo-Agriculture-School/01-planning/SaaSパッケージ選定-要件仕様書.md",
+    "05_Output/Areas/Business/Contract-Companies/NTTDX/00-契約会社概要.md",
+    "05_Output/Areas/Business/Contract-Companies/NTTDX/Clients/札幌市/00-クライアント概要.md",
+    "05_Output/Projects/@Active/NTTDX-Cases/00-NTTDX案件マスター.md",
+    "CURSOR-COMMANDS-GUIDE.md",
+    "05_Output/Projects/@Active/NTTDX-Tokyo-Agriculture-School/01-planning/ユーザーフロー-サービスブループリント.md",
+    "05_Output/Projects/@Active/NTTDX-Tokyo-Agriculture-School/01-planning/ユーザーフロー整理.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo",
+    "00_Memo/20251118memo",
+    "無題のファイル.canvas",
+    "06_Templates/Mobile",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/window.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/vercel.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/next.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/globe.svg",
-    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/file.svg",
-    "無題のファイル.canvas"
+    "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/file.svg"
   ]
 }
