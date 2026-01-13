@@ -25,6 +25,10 @@ WHERE file.mtime >= date(today) - dur(2 days)
 LIMIT 6
 ```
 
+## 📋 タスク管理
+- [[All-Projects-Task-Management|全プロジェクトタスク管理カンバン]]
+- [[🎯-Projects-Dashboard|プロジェクトダッシュボード]]
+
 ## 💧 エネルギーチェック
 - 睡眠 : [ ] 7h以上
 - 運動 : [ ] 有酸素または筋トレ

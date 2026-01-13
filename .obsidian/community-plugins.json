@@ -6,5 +6,6 @@
   "obsidian-tasks-plugin",
   "templater-obsidian",
   "dataview",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "obsidian-git"
 ]

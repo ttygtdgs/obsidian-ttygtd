@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(git clone:*)",
+      "Bash(npm install)",
+      "Bash(node generate-pptx.js:*)",
+      "Bash(npx codex --version)",
+      "Bash(npm install:*)",
+      "Bash(codex:*)",
+      "Bash(npx @openai/codex --version)",
+      "Bash(node generate-pptx.cjs:*)",
+      "Bash(/bin/cp:*)",
+      "Bash(unzip:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(node generate-pptx-nttdx.cjs:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(mdfind:*)",
+      "Bash(npm init -y)",
+      "Bash(venv/bin/python:*)",
+      "Bash(grep:*)",
+      "Bash(open:*)",
+      "Bash(sort:*)",
+      "Bash(vm_stat:*)",
+      "Bash(top:*)",
+      "Bash(ps:*)",
+      "Bash(ssh:*)",
+      "Bash(pbcopy)",
+      "Bash(ssh-keygen:*)",
+      "Bash(git remote set-url:*)"
+    ]
+  }
+}
