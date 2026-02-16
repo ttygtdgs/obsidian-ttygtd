@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "07-頭出し-施策1&2-概要すり合わせ"
+              "title": "08-サービスページ改善分析レポート"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "頭出し",
+                "query": "サービスページ改善",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -269,8 +269,10 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
-    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md.tmp.9041.1771231993088",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/チャネル戦略-施策1&2_NTTDXPN.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/generate-channel-strategy-pptx.cjs",
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/2026-02-データ分析講師-振り返り共有用.md",
@@ -303,8 +305,6 @@
     "02_Daily/2025/2025-11/2025-11-25/2025-11-25-TODO.md",
     "02_Daily/2025/2025-11/2025-11-25/2025-11-25-Daily.md",
     "99_Archive/20251119_Xリンク調査メモ.md",
-    "99_Archive/20251118_Xリンク調査メモ.md",
-    "03_Input/リンクストック-あとで読む.md",
     "無題のファイル.canvas",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/window.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/vercel.svg",
