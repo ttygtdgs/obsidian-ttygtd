@@ -30,8 +30,45 @@
               "icon": "lucide-file",
               "title": "00-NTTDX案件マスター"
             }
+          },
+          {
+            "id": "9c3d2436e812d2cd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/2026-02-アイデアソンKPT振り返り.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "2026-02-アイデアソンKPT振り返り"
+            }
+          },
+          {
+            "id": "fddd3914625e18d2",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -63,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "DXPN",
+                "query": "KPT",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -217,8 +254,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "75d446d70a4311be",
+  "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/チャネル戦略-施策1&2_NTTDXPN.pptx",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/generate-channel-strategy-pptx.cjs",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/2026-02-データ分析講師-振り返り共有用.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/05-チャネル戦略-施策1&2深堀り.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/データ活用パターン集-アイデアソン設計用.md",
+    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/2026-02-アイデアソンKPT振り返り.md.tmp.78860.1770946256919",
     "generate-pptx-nttdx.cjs.tmp.37229.1768308443912",
     "generate-pptx-nttdx.cjs",
     "generate-pptx-nttdx.cjs.tmp.37229.1768308184485",
@@ -233,11 +276,8 @@
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/r1_講義スライド-データ利活用のススメ.pptx",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/2026-01-社内議論用-共立製薬提案.pptx",
     "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning/共立製薬-生成AI実証実験-提案方針整理.md",
-    "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning",
-    "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC",
     "2025-11-19.md",
     "00_Memo/アプリアイデアメモ.md",
-    "00_Memo/cybouz",
     "01_Inbox/2025-11-25-長野案件-社内相談内容.md",
     "01_Inbox/2025-11-25-長野案件-データベース構築-提案案整理.md",
     "00_Memo/2025-11-25-長野案件-データベース構築.md",
@@ -252,9 +292,6 @@
     "99_Archive/20251118_Xリンク調査メモ.md",
     "03_Input/リンクストック-あとで読む.md",
     "99_Archive/2025-11-19.md",
-    "01_Inbox/20251121_札幌市案件-アイデアソン準備メモ.md",
-    "01_Inbox/20251119_Xリンク調査メモ.md",
-    "00_Memo/2025-11-19.md",
     "無題のファイル.canvas",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/window.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/vercel.svg",

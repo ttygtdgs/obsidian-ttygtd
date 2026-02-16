@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AnimalScoreSheetExtraction",
+  "description": "動物スコアシートからの抽出結果スキーマ",
+  "type": "object",
+  "required": ["records"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "description": "文書メタデータ",
+      "properties": {
+        "document_date": {
+          "type": ["string", "null"],
+          "description": "文書日付 (YYYY-MM-DD)"
+        },
+        "observer_name": {
+          "type": ["string", "null"],
+          "description": "観察者名"
+        },
+        "facility_name": {
+          "type": ["string", "null"],
+          "description": "施設名"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "description": "観察記録の配列",
+      "items": {
+        "type": "object",
+        "required": ["animal_id"],
+        "properties": {
+          "animal_id": {
+            "type": "string",
+            "description": "動物識別番号"
+          },
+          "observation_time": {
+            "type": ["string", "null"],
+            "description": "観察時刻 (HH:MM)"
+          },
+          "body_temperature": {
+            "type": ["number", "null"],
+            "description": "体温（℃）"
+          },
+          "body_weight": {
+            "type": ["number", "null"],
+            "description": "体重（kg）"
+          },
+          "appetite": {
+            "type": ["string", "null"],
+            "description": "食欲"
+          },
+          "activity_level": {
+            "type": ["string", "null"],
+            "description": "元気・活動レベル"
+          },
+          "feces_status": {
+            "type": ["string", "null"],
+            "description": "糞便状態"
+          },
+          "dehydration": {
+            "type": ["boolean", "null"],
+            "description": "脱水の有無"
+          },
+          "vomiting": {
+            "type": ["boolean", "null"],
+            "description": "嘔吐の有無"
+          },
+          "nasal_discharge": {
+            "type": ["boolean", "null"],
+            "description": "鼻汁の有無"
+          },
+          "lacrimation": {
+            "type": ["boolean", "null"],
+            "description": "流涙の有無"
+          },
+          "eye_discharge": {
+            "type": ["boolean", "null"],
+            "description": "眼脂の有無"
+          },
+          "coughing": {
+            "type": ["boolean", "null"],
+            "description": "発咳の有無"
+          },
+          "sneezing": {
+            "type": ["boolean", "null"],
+            "description": "くしゃみの有無"
+          },
+          "abnormal_respiratory_sounds": {
+            "type": ["boolean", "null"],
+            "description": "呼吸音異常の有無"
+          },
+          "notes": {
+            "type": ["string", "null"],
+            "description": "備考・特記事項"
+          }
+        }
+      }
+    }
+  }
+}

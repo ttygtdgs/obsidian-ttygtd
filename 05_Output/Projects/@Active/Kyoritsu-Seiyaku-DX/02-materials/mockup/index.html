@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>共立製薬 スコアシートDX - モックアップ</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- SheetJS for Excel export -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'Inter', 'sans-serif'],
+            mono: ['Inter', 'monospace'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#172554',
+            },
+            confidence: {
+              high: '#059669',
+              medium: '#d97706',
+              low: '#dc2626',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+    }
+
+    .mono {
+      font-family: 'Inter', monospace;
+    }
+
+    /* Subtle animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Dropzone styling */
+    .dropzone-active {
+      border-color: #3b82f6 !important;
+      background-color: #eff6ff !important;
+    }
+
+    /* Confidence badge pulse */
+    .confidence-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // ============================================================
+    // EXCEL EXPORT UTILITIES
+    // ============================================================
+    const ExcelExporter = {
+      // Export history data to Excel
+      exportHistory: (historyData, filename = "処理履歴") => {
+        const headers = ["ID", "日付", "時間", "対象", "信頼度", "ステータス"];
+        const rows = historyData.map(item => [
+          item.id,
+          item.date,
+          item.time,
+          item.animal,
+          `${item.confidence}%`,
+          item.status
+        ]);
+
+        const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+
+        // Set column widths
+        ws['!cols'] = [
+          { wch: 20 }, // ID
+          { wch: 12 }, // 日付
+          { wch: 8 },  // 時間
+          { wch: 18 }, // 対象
+          { wch: 10 }, // 信頼度
+          { wch: 10 }, // ステータス
+        ];
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "処理履歴");
+
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+        XLSX.writeFile(wb, `${filename}_${dateStr}.xlsx`);
+
+        return true;
+      },
+
+      // Export scoresheet data to Excel (supports single or multiple records)
+      // Input: single data object or array of data objects
+      exportScoreSheet: (dataInput) => {
+        const wb = XLSX.utils.book_new();
+
+        // Convert single data to array for uniform processing
+        const dataArray = Array.isArray(dataInput) ? dataInput : [dataInput];
+
+        // 観察項目を0（正常）、1（軽度）、2（重度）に変換する関数
+        const toNumeric = (field, value) => {
+          const valueMap = {
+            appetite: {
+              "良好": 0,
+              "残餌1/3以下": 1,
+              "残餌2/3以下": 2,
+              "食べない": 2,
+            },
+            energy: {
+              "元気": 0,
+              "やや元気なし": 1,
+              "元気なし": 2,
+              "ぐったり": 2,
+            },
+            dehydration: {
+              "なし": 0,
+              "軽度": 1,
+              "中度": 2,
+              "重度": 2,
+            },
+            vomiting: {
+              "なし": 0,
+              "あり（1回）": 1,
+              "あり（複数回）": 2,
+            },
+            feces: {
+              "普通": 0,
+              "軟便": 1,
+              "なし": 1,
+              "下痢": 2,
+              "血便": 2,
+            },
+            nasalDischarge: {
+              "なし": 0,
+              "あり（漿液性）": 1,
+              "あり（粘液性）": 2,
+              "あり（膿性）": 2,
+            },
+            lacrimation: {
+              "なし": 0,
+              "あり": 1,
+            },
+            conjunctivitis: {
+              "なし": 0,
+              "軽度": 1,
+              "重度": 2,
+            },
+            eyeDischarge: {
+              "なし": 0,
+              "あり": 1,
+            },
+            cough: {
+              "なし": 0,
+              "あり（軽度）": 1,
+              "あり（重度）": 2,
+            },
+            sneezing: {
+              "なし": 0,
+              "あり": 1,
+            },
+            abnormalBreathing: {
+              "なし": 0,
+              "あり": 1,
+            },
+          };
+          return valueMap[field]?.[value] ?? 0;
+        };
+
+        // Define headers (1行目のカラム)
+        const headers = [
+          "ID",
+          "年月日",
+          "時間",
+          "管理者",
+          "動物種",
+          "個体ID",
+          "直腸温(℃)",
+          "体重(kg)",
+          "食欲",
+          "元気",
+          "脱水",
+          "嘔吐",
+          "糞便",
+          "鼻汁",
+          "流淚",
+          "結膜炎",
+          "眼脂",
+          "発咳",
+          "くしゃみ",
+          "呼吸音異常",
+        ];
+
+        // Convert each data record to a row (2行目以降のデータ)
+        // 観察項目は0（正常）、1（軽度）、2（重度）で出力
+        const rows = dataArray.map(data => [
+          data.id,
+          data.basicInfo.date.value,
+          data.basicInfo.time.value,
+          data.basicInfo.manager.value,
+          data.basicInfo.animalType.value,
+          data.basicInfo.animalId.value,
+          data.numericData.rectalTemp.value,
+          data.numericData.weight.value,
+          toNumeric('appetite', data.checkboxData.appetite.value),
+          toNumeric('energy', data.checkboxData.energy.value),
+          toNumeric('dehydration', data.checkboxData.dehydration.value),
+          toNumeric('vomiting', data.checkboxData.vomiting.value),
+          toNumeric('feces', data.checkboxData.feces.value),
+          toNumeric('nasalDischarge', data.checkboxData.nasalDischarge.value),
+          toNumeric('lacrimation', data.checkboxData.lacrimation.value),
+          toNumeric('conjunctivitis', data.checkboxData.conjunctivitis.value),
+          toNumeric('eyeDischarge', data.checkboxData.eyeDischarge.value),
+          toNumeric('cough', data.checkboxData.cough.value),
+          toNumeric('sneezing', data.checkboxData.sneezing.value),
+          toNumeric('abnormalBreathing', data.checkboxData.abnormalBreathing.value),
+        ]);
+
+        // Create sheet with headers + data rows
+        const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+
+        // Set column widths
+        ws['!cols'] = [
+          { wch: 18 }, // ID
+          { wch: 12 }, // 年月日
+          { wch: 8 },  // 時間
+          { wch: 12 }, // 管理者
+          { wch: 8 },  // 動物種
+          { wch: 14 }, // 個体ID
+          { wch: 10 }, // 直腸温
+          { wch: 10 }, // 体重
+          { wch: 6 },  // 食欲
+          { wch: 6 },  // 元気
+          { wch: 6 },  // 脱水
+          { wch: 6 },  // 嘔吐
+          { wch: 6 },  // 糞便
+          { wch: 6 },  // 鼻汁
+          { wch: 6 },  // 流淚
+          { wch: 6 },  // 結膜炎
+          { wch: 6 },  // 眼脂
+          { wch: 6 },  // 発咳
+          { wch: 8 },  // くしゃみ
+          { wch: 10 }, // 呼吸音異常
+        ];
+
+        XLSX.utils.book_append_sheet(wb, ws, "スコアシート");
+
+        // Generate filename
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+        const filename = dataArray.length === 1
+          ? `スコアシート_${dataArray[0].id}.xlsx`
+          : `スコアシート一覧_${dateStr}.xlsx`;
+
+        XLSX.writeFile(wb, filename);
+
+        return filename;
+      }
+    };
+
+    // ============================================================
+    // TOAST NOTIFICATION
+    // ============================================================
+    const Toast = ({ message, type = "success", onClose }) => {
+      useEffect(() => {
+        const timer = setTimeout(onClose, 3000);
+        return () => clearTimeout(timer);
+      }, [onClose]);
+
+      const bgColor = type === "success" ? "bg-emerald-600" : type === "error" ? "bg-red-600" : "bg-primary-600";
+      const icon = type === "success" ? "✓" : type === "error" ? "✕" : "ℹ";
+
+      return (
+        <div className={`fixed bottom-6 right-6 ${bgColor} text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-fade-in z-50`}>
+          <span className="text-lg">{icon}</span>
+          <span>{message}</span>
+        </div>
+      );
+    };
+
+    // ============================================================
+    // ICONS (using Lucide via CDN)
+    // ============================================================
+    const Icon = ({ name, className = "w-5 h-5", ...props }) => {
+      const ref = useRef(null);
+      useEffect(() => {
+        if (ref.current) {
+          ref.current.innerHTML = '';
+          lucide.createElement(lucide.icons[name]).then(el => {
+            if (el && ref.current) {
+              el.classList.add(...className.split(' '));
+              ref.current.appendChild(el);
+            }
+          }).catch(() => {
+            // Fallback for icons
+            ref.current.innerHTML = `<span class="${className}">●</span>`;
+          });
+        }
+      }, [name, className]);
+      return <span ref={ref} className="inline-flex items-center justify-center" {...props} />;
+    };
+
+    // Simple icon component using emoji fallbacks for reliability
+    const SimpleIcon = ({ type, className = "" }) => {
+      const icons = {
+        upload: "📤",
+        file: "📄",
+        check: "✓",
+        alert: "⚠",
+        search: "🔍",
+        download: "📥",
+        calendar: "📅",
+        clock: "🕐",
+        user: "👤",
+        dog: "🐕",
+        cat: "🐈",
+        thermometer: "🌡️",
+        weight: "⚖️",
+        grid: "▦",
+        list: "☰",
+        home: "🏠",
+        settings: "⚙️",
+        chevronRight: "›",
+        x: "✕",
+        plus: "+",
+        minus: "-",
+        edit: "✏️",
+        save: "💾",
+        refresh: "🔄",
+      };
+      return <span className={className}>{icons[type] || "●"}</span>;
+    };
+
+    // ============================================================
+    // SAMPLE DATA
+    // ============================================================
+    const sampleScoreSheetData = {
+      id: "SS-2026-0120-001",
+      basicInfo: {
+        date: { value: "2026-01-20", confidence: 0.95 },
+        time: { value: "14:30", confidence: 0.92 },
+        manager: { value: "田中太郎", confidence: 0.88 },
+        animalType: { value: "犬", confidence: 0.99 },
+        animalId: { value: "D-2024-0542", confidence: 0.91 },
+      },
+      numericData: {
+        rectalTemp: { value: "38.5", unit: "℃", confidence: 0.78, range: "35.0-42.0" },
+        weight: { value: "12.3", unit: "kg", confidence: 0.94, range: "0-100" },
+      },
+      checkboxData: {
+        appetite: { value: "残餌1/3以下", confidence: 0.85, options: ["良好", "残餌1/3以下", "残餌2/3以下", "食べない"] },
+        energy: { value: "やや元気なし", confidence: 0.62, options: ["元気", "やや元気なし", "元気なし", "ぐったり"] },
+        dehydration: { value: "なし", confidence: 0.91, options: ["なし", "軽度", "中度", "重度"] },
+        vomiting: { value: "なし", confidence: 0.89, options: ["なし", "あり（1回）", "あり（複数回）"] },
+        feces: { value: "普通", confidence: 0.83, options: ["普通", "軟便", "下痢", "血便", "なし"] },
+        nasalDischarge: { value: "なし", confidence: 0.95, options: ["なし", "あり（漿液性）", "あり（粘液性）", "あり（膿性）"] },
+        lacrimation: { value: "なし", confidence: 0.93, options: ["なし", "あり"] },
+        conjunctivitis: { value: "なし", confidence: 0.90, options: ["なし", "軽度", "重度"] },
+        eyeDischarge: { value: "なし", confidence: 0.88, options: ["なし", "あり"] },
+        cough: { value: "なし", confidence: 0.96, options: ["なし", "あり（軽度）", "あり（重度）"] },
+        sneezing: { value: "なし", confidence: 0.94, options: ["なし", "あり"] },
+        abnormalBreathing: { value: "なし", confidence: 0.87, options: ["なし", "あり"] },
+      },
+      notes: { value: "", confidence: 1.0 },
+    };
+
+    // Additional sample data for multiple records export
+    const sampleScoreSheetDataList = [
+      sampleScoreSheetData,
+      {
+        id: "SS-2026-0120-002",
+        basicInfo: {
+          date: { value: "2026-01-20", confidence: 0.97 },
+          time: { value: "14:45", confidence: 0.95 },
+          manager: { value: "佐藤花子", confidence: 0.92 },
+          animalType: { value: "猫", confidence: 0.99 },
+          animalId: { value: "C-2024-0128", confidence: 0.94 },
+        },
+        numericData: {
+          rectalTemp: { value: "38.8", unit: "℃", confidence: 0.91, range: "35.0-42.0" },
+          weight: { value: "4.2", unit: "kg", confidence: 0.96, range: "0-100" },
+        },
+        checkboxData: {
+          appetite: { value: "良好", confidence: 0.95, options: ["良好", "残餌1/3以下", "残餌2/3以下", "食べない"] },
+          energy: { value: "元気", confidence: 0.93, options: ["元気", "やや元気なし", "元気なし", "ぐったり"] },
+          dehydration: { value: "なし", confidence: 0.97, options: ["なし", "軽度", "中度", "重度"] },
+          vomiting: { value: "なし", confidence: 0.95, options: ["なし", "あり（1回）", "あり（複数回）"] },
+          feces: { value: "普通", confidence: 0.92, options: ["普通", "軟便", "下痢", "血便", "なし"] },
+          nasalDischarge: { value: "なし", confidence: 0.96, options: ["なし", "あり（漿液性）", "あり（粘液性）", "あり（膿性）"] },
+          lacrimation: { value: "なし", confidence: 0.94, options: ["なし", "あり"] },
+          conjunctivitis: { value: "なし", confidence: 0.93, options: ["なし", "軽度", "重度"] },
+          eyeDischarge: { value: "なし", confidence: 0.91, options: ["なし", "あり"] },
+          cough: { value: "なし", confidence: 0.97, options: ["なし", "あり（軽度）", "あり（重度）"] },
+          sneezing: { value: "なし", confidence: 0.95, options: ["なし", "あり"] },
+          abnormalBreathing: { value: "なし", confidence: 0.94, options: ["なし", "あり"] },
+        },
+        notes: { value: "", confidence: 1.0 },
+      },
+      {
+        id: "SS-2026-0119-001",
+        basicInfo: {
+          date: { value: "2026-01-19", confidence: 0.93 },
+          time: { value: "09:15", confidence: 0.90 },
+          manager: { value: "田中太郎", confidence: 0.89 },
+          animalType: { value: "犬", confidence: 0.98 },
+          animalId: { value: "D-2024-0543", confidence: 0.91 },
+        },
+        numericData: {
+          rectalTemp: { value: "39.1", unit: "℃", confidence: 0.88, range: "35.0-42.0" },
+          weight: { value: "8.7", unit: "kg", confidence: 0.93, range: "0-100" },
+        },
+        checkboxData: {
+          appetite: { value: "残餌2/3以下", confidence: 0.82, options: ["良好", "残餌1/3以下", "残餌2/3以下", "食べない"] },
+          energy: { value: "やや元気なし", confidence: 0.79, options: ["元気", "やや元気なし", "元気なし", "ぐったり"] },
+          dehydration: { value: "軽度", confidence: 0.85, options: ["なし", "軽度", "中度", "重度"] },
+          vomiting: { value: "あり（1回）", confidence: 0.87, options: ["なし", "あり（1回）", "あり（複数回）"] },
+          feces: { value: "軟便", confidence: 0.84, options: ["普通", "軟便", "下痢", "血便", "なし"] },
+          nasalDischarge: { value: "なし", confidence: 0.92, options: ["なし", "あり（漿液性）", "あり（粘液性）", "あり（膿性）"] },
+          lacrimation: { value: "なし", confidence: 0.91, options: ["なし", "あり"] },
+          conjunctivitis: { value: "なし", confidence: 0.89, options: ["なし", "軽度", "重度"] },
+          eyeDischarge: { value: "なし", confidence: 0.90, options: ["なし", "あり"] },
+          cough: { value: "あり（軽度）", confidence: 0.86, options: ["なし", "あり（軽度）", "あり（重度）"] },
+          sneezing: { value: "あり", confidence: 0.88, options: ["なし", "あり"] },
+          abnormalBreathing: { value: "なし", confidence: 0.91, options: ["なし", "あり"] },
+        },
+        notes: { value: "", confidence: 1.0 },
+      },
+    ];
+
+    const sampleHistory = [
+      { id: "SS-2026-0120-001", date: "2026-01-20", time: "14:30", animal: "犬 D-2024-0542", status: "確認中", confidence: 85 },
+      { id: "SS-2026-0120-002", date: "2026-01-20", time: "14:45", animal: "猫 C-2024-0128", status: "完了", confidence: 94 },
+      { id: "SS-2026-0119-001", date: "2026-01-19", time: "09:15", animal: "犬 D-2024-0543", status: "完了", confidence: 91 },
+      { id: "SS-2026-0119-002", date: "2026-01-19", time: "09:30", animal: "犬 D-2024-0544", status: "完了", confidence: 89 },
+      { id: "SS-2026-0119-003", date: "2026-01-19", time: "10:00", animal: "猫 C-2024-0129", status: "完了", confidence: 96 },
+      { id: "SS-2026-0118-001", date: "2026-01-18", time: "14:00", animal: "犬 D-2024-0545", status: "エラー", confidence: 45 },
+      { id: "SS-2026-0118-002", date: "2026-01-18", time: "14:15", animal: "猫 C-2024-0130", status: "完了", confidence: 92 },
+    ];
+
+    const recentUploads = [
+      { name: "scoresheet_20260120_1430.pdf", date: "2026-01-20 14:32", status: "処理完了" },
+      { name: "scoresheet_20260120_1445.pdf", date: "2026-01-20 14:47", status: "処理完了" },
+      { name: "scoresheet_20260119_0915.pdf", date: "2026-01-19 09:18", status: "処理完了" },
+    ];
+
+    // ============================================================
+    // UTILITY COMPONENTS
+    // ============================================================
+    const ConfidenceBadge = ({ confidence, showValue = true }) => {
+      const getColor = (conf) => {
+        if (conf >= 0.85) return { bg: "bg-emerald-100", text: "text-emerald-700", border: "border-emerald-300" };
+        if (conf >= 0.70) return { bg: "bg-amber-100", text: "text-amber-700", border: "border-amber-300" };
+        return { bg: "bg-red-100", text: "text-red-700", border: "border-red-300" };
+      };
+
+      const colors = getColor(confidence);
+      const percentage = Math.round(confidence * 100);
+
+      return (
+        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${colors.bg} ${colors.text} border ${colors.border} ${confidence < 0.70 ? 'confidence-pulse' : ''}`}>
+          {showValue && <span className="mono">{percentage}%</span>}
+        </span>
+      );
+    };
+
+    const Button = ({ children, variant = "primary", size = "md", className = "", ...props }) => {
+      const variants = {
+        primary: "bg-primary-600 hover:bg-primary-700 text-white shadow-sm",
+        secondary: "bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-sm",
+        ghost: "hover:bg-slate-100 text-slate-600",
+        danger: "bg-red-600 hover:bg-red-700 text-white shadow-sm",
+        success: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm",
+      };
+
+      const sizes = {
+        sm: "px-3 py-1.5 text-sm",
+        md: "px-4 py-2 text-sm",
+        lg: "px-6 py-3 text-base",
+      };
+
+      return (
+        <button
+          className={`inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`}
+          {...props}
+        >
+          {children}
+        </button>
+      );
+    };
+
+    const Card = ({ children, className = "", ...props }) => (
+      <div className={`bg-white rounded-xl border border-slate-200 shadow-sm ${className}`} {...props}>
+        {children}
+      </div>
+    );
+
+    // ============================================================
+    // LAYOUT COMPONENTS
+    // ============================================================
+    const Sidebar = ({ currentPage, setCurrentPage }) => {
+      const menuItems = [
+        { id: "upload", label: "アップロード", icon: "upload" },
+        { id: "review", label: "データ確認", icon: "check" },
+        { id: "dashboard", label: "ダッシュボード", icon: "grid" },
+      ];
+
+      return (
+        <aside className="w-64 bg-white border-r border-slate-200 flex flex-col">
+          {/* Logo */}
+          <div className="h-16 flex items-center px-6 border-b border-slate-200">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                DX
+              </div>
+              <div>
+                <div className="font-semibold text-slate-800 text-sm">スコアシートDX</div>
+                <div className="text-xs text-slate-500">共立製薬</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 p-4">
+            <ul className="space-y-1">
+              {menuItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => setCurrentPage(item.id)}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                      currentPage === item.id
+                        ? "bg-primary-50 text-primary-700"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    }`}
+                  >
+                    <SimpleIcon type={item.icon} className="text-lg" />
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-slate-200">
+            <div className="flex items-center gap-3 px-4 py-2">
+              <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-sm">
+                <SimpleIcon type="user" />
+              </div>
+              <div className="text-sm">
+                <div className="font-medium text-slate-800">管理者</div>
+                <div className="text-xs text-slate-500">admin@kyoritsu.co.jp</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      );
+    };
+
+    const Header = ({ title, subtitle }) => (
+      <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6">
+        <div>
+          <h1 className="text-lg font-semibold text-slate-800">{title}</h1>
+          {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="text-sm text-slate-500">
+            <span className="mono">2026/01/20 14:35</span>
+          </div>
+        </div>
+      </header>
+    );
+
+    // ============================================================
+    // PAGE: UPLOAD
+    // ============================================================
+    const UploadPage = () => {
+      const [isDragging, setIsDragging] = useState(false);
+      const [uploadProgress, setUploadProgress] = useState(null);
+
+      const handleDrop = (e) => {
+        e.preventDefault();
+        setIsDragging(false);
+        // Simulate upload
+        setUploadProgress(0);
+        const interval = setInterval(() => {
+          setUploadProgress(prev => {
+            if (prev >= 100) {
+              clearInterval(interval);
+              setTimeout(() => setUploadProgress(null), 1000);
+              return 100;
+            }
+            return prev + 10;
+          });
+        }, 200);
+      };
+
+      return (
+        <div className="flex-1 flex flex-col">
+          <Header title="PDFアップロード" subtitle="スコアシートをアップロードしてOCR処理を開始" />
+
+          <main className="flex-1 p-6 overflow-auto">
+            <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
+              {/* Dropzone */}
+              <Card className="p-8">
+                <div
+                  className={`border-2 border-dashed rounded-xl p-12 text-center transition-colors ${
+                    isDragging ? "border-primary-500 bg-primary-50" : "border-slate-300 hover:border-slate-400"
+                  }`}
+                  onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+                  onDragLeave={() => setIsDragging(false)}
+                  onDrop={handleDrop}
+                >
+                  <div className="flex flex-col items-center gap-4">
+                    <div className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl ${
+                      isDragging ? "bg-primary-100 text-primary-600" : "bg-slate-100 text-slate-400"
+                    }`}>
+                      <SimpleIcon type="upload" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-medium text-slate-700">
+                        PDFファイルをドラッグ＆ドロップ
+                      </p>
+                      <p className="text-sm text-slate-500 mt-1">
+                        または下のボタンでファイルを選択
+                      </p>
+                    </div>
+                    <Button variant="primary" size="lg" className="mt-2">
+                      <SimpleIcon type="file" className="mr-2" />
+                      ファイルを選択
+                    </Button>
+                    <p className="text-xs text-slate-400 mt-2">
+                      対応形式: PDF（推奨解像度: 300dpi以上）
+                    </p>
+                  </div>
+                </div>
+
+                {/* Progress */}
+                {uploadProgress !== null && (
+                  <div className="mt-6 animate-fade-in">
+                    <div className="flex items-center justify-between text-sm mb-2">
+                      <span className="text-slate-600">アップロード中...</span>
+                      <span className="font-medium text-primary-600 mono">{uploadProgress}%</span>
+                    </div>
+                    <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-primary-500 to-primary-600 transition-all duration-300"
+                        style={{ width: `${uploadProgress}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </Card>
+
+              {/* Recent Uploads */}
+              <Card>
+                <div className="p-4 border-b border-slate-200">
+                  <h2 className="font-semibold text-slate-800">最近のアップロード</h2>
+                </div>
+                <div className="divide-y divide-slate-100">
+                  {recentUploads.map((file, i) => (
+                    <div key={i} className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center text-red-500">
+                          <SimpleIcon type="file" className="text-lg" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-slate-800 text-sm">{file.name}</p>
+                          <p className="text-xs text-slate-500">{file.date}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+                          <SimpleIcon type="check" className="mr-1" />
+                          {file.status}
+                        </span>
+                        <Button variant="ghost" size="sm">詳細</Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              {/* Tips */}
+              <Card className="p-4 bg-primary-50 border-primary-200">
+                <div className="flex gap-3">
+                  <div className="text-primary-600 text-lg">💡</div>
+                  <div>
+                    <h3 className="font-medium text-primary-800 text-sm">アップロードのヒント</h3>
+                    <ul className="mt-1 text-sm text-primary-700 space-y-1">
+                      <li>• スキャン時は300dpi以上の解像度を推奨</li>
+                      <li>• 傾き補正を行うとOCR精度が向上します</li>
+                      <li>• 影や裏写りを極力排除してください</li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </main>
+        </div>
+      );
+    };
+
+    // ============================================================
+    // PAGE: DATA REVIEW
+    // ============================================================
+    const ReviewPage = ({ showToast }) => {
+      const [data, setData] = useState(sampleScoreSheetData);
+      const [editingField, setEditingField] = useState(null);
+      const [isExporting, setIsExporting] = useState(false);
+
+      const handleExportExcel = () => {
+        setIsExporting(true);
+        try {
+          const filename = ExcelExporter.exportScoreSheet(data);
+          showToast(`Excelファイルを出力しました: ${filename}`, "success");
+        } catch (error) {
+          showToast("Excel出力に失敗しました", "error");
+          console.error(error);
+        } finally {
+          setIsExporting(false);
+        }
+      };
+
+      const handleFieldChange = (category, field, newValue) => {
+        setData(prev => ({
+          ...prev,
+          [category]: {
+            ...prev[category],
+            [field]: {
+              ...prev[category][field],
+              value: newValue,
+              confidence: 1.0, // Manual edit = 100% confidence
+            }
+          }
+        }));
+        setEditingField(null);
+      };
+
+      const FieldRow = ({ label, field, category, showRange }) => {
+        const fieldData = data[category][field];
+        const isEditing = editingField === `${category}.${field}`;
+
+        return (
+          <div className={`flex items-center justify-between py-3 px-4 rounded-lg transition-colors ${
+            fieldData.confidence < 0.70 ? "bg-red-50" : fieldData.confidence < 0.85 ? "bg-amber-50" : "hover:bg-slate-50"
+          }`}>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-slate-600 w-28">{label}</span>
+              {isEditing ? (
+                <input
+                  type="text"
+                  defaultValue={fieldData.value}
+                  autoFocus
+                  className="border border-primary-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  onBlur={(e) => handleFieldChange(category, field, e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleFieldChange(category, field, e.target.value)}
+                />
+              ) : (
+                <span className="font-medium text-slate-800 mono">
+                  {fieldData.value}
+                  {fieldData.unit && <span className="text-slate-500 ml-1">{fieldData.unit}</span>}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              {showRange && fieldData.range && (
+                <span className="text-xs text-slate-400">({fieldData.range})</span>
+              )}
+              <ConfidenceBadge confidence={fieldData.confidence} />
+              <button
+                onClick={() => setEditingField(`${category}.${field}`)}
+                className="p-1 text-slate-400 hover:text-primary-600 transition-colors"
+              >
+                <SimpleIcon type="edit" className="text-sm" />
+              </button>
+            </div>
+          </div>
+        );
+      };
+
+      // 観察項目の値を0, 1, 2に変換するマップ
+      const valueToNumericMap = {
+        appetite: { "良好": 0, "残餌1/3以下": 1, "残餌2/3以下": 2, "食べない": 2 },
+        energy: { "元気": 0, "やや元気なし": 1, "元気なし": 2, "ぐったり": 2 },
+        dehydration: { "なし": 0, "軽度": 1, "中度": 2, "重度": 2 },
+        vomiting: { "なし": 0, "あり（1回）": 1, "あり（複数回）": 2 },
+        feces: { "普通": 0, "軟便": 1, "なし": 1, "下痢": 2, "血便": 2 },
+        nasalDischarge: { "なし": 0, "あり（漿液性）": 1, "あり（粘液性）": 2, "あり（膿性）": 2 },
+        lacrimation: { "なし": 0, "あり": 1 },
+        conjunctivitis: { "なし": 0, "軽度": 1, "重度": 2 },
+        eyeDischarge: { "なし": 0, "あり": 1 },
+        cough: { "なし": 0, "あり（軽度）": 1, "あり（重度）": 2 },
+        sneezing: { "なし": 0, "あり": 1 },
+        abnormalBreathing: { "なし": 0, "あり": 1 },
+      };
+
+      // 数値から値への逆変換マップを生成
+      const numericToValueMap = {};
+      Object.keys(valueToNumericMap).forEach(field => {
+        numericToValueMap[field] = {};
+        Object.entries(valueToNumericMap[field]).forEach(([val, num]) => {
+          if (!(num in numericToValueMap[field])) {
+            numericToValueMap[field][num] = val;
+          }
+        });
+      });
+
+      const getNumericValue = (field, value) => valueToNumericMap[field]?.[value] ?? 0;
+      const getTextValue = (field, numValue) => numericToValueMap[field]?.[numValue] ?? "";
+
+      const CheckboxFieldRow = ({ label, field }) => {
+        const fieldData = data.checkboxData[field];
+        const isEditing = editingField === `checkboxData.${field}`;
+        const numericValue = getNumericValue(field, fieldData.value);
+
+        // 選択可能な数値オプションを取得（重複排除）
+        const numericOptions = [...new Set(Object.values(valueToNumericMap[field]))].sort();
+
+        const handleNumericChange = (numVal) => {
+          const textVal = getTextValue(field, parseInt(numVal));
+          handleFieldChange('checkboxData', field, textVal);
+        };
+
+        return (
+          <div className={`flex items-center justify-between py-2.5 px-4 rounded-lg transition-colors ${
+            fieldData.confidence < 0.70 ? "bg-red-50" : fieldData.confidence < 0.85 ? "bg-amber-50" : "hover:bg-slate-50"
+          }`}>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-slate-600 w-24">{label}</span>
+              {isEditing ? (
+                <select
+                  defaultValue={numericValue}
+                  autoFocus
+                  className="border border-primary-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 w-16"
+                  onChange={(e) => handleNumericChange(e.target.value)}
+                  onBlur={() => setEditingField(null)}
+                >
+                  {numericOptions.map(num => (
+                    <option key={num} value={num}>{num}</option>
+                  ))}
+                </select>
+              ) : (
+                <span className={`text-sm font-bold mono w-8 h-8 flex items-center justify-center rounded ${
+                  numericValue === 0 ? "bg-emerald-100 text-emerald-700" :
+                  numericValue === 1 ? "bg-amber-100 text-amber-700" :
+                  "bg-red-100 text-red-700"
+                }`}>
+                  {numericValue}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              <ConfidenceBadge confidence={fieldData.confidence} />
+              <button
+                onClick={() => setEditingField(`checkboxData.${field}`)}
+                className="p-1 text-slate-400 hover:text-primary-600 transition-colors"
+              >
+                <SimpleIcon type="edit" className="text-sm" />
+              </button>
+            </div>
+          </div>
+        );
+      };
+
+      // Calculate overall confidence
+      const allConfidences = [
+        ...Object.values(data.basicInfo).map(f => f.confidence),
+        ...Object.values(data.numericData).map(f => f.confidence),
+        ...Object.values(data.checkboxData).map(f => f.confidence),
+      ];
+      const avgConfidence = allConfidences.reduce((a, b) => a + b, 0) / allConfidences.length;
+      const lowConfidenceCount = allConfidences.filter(c => c < 0.85).length;
+
+      return (
+        <div className="flex-1 flex flex-col">
+          <Header title="データ確認・補正" subtitle={`ID: ${data.id}`} />
+
+          <main className="flex-1 p-6 overflow-auto">
+            <div className="flex gap-6 h-full animate-fade-in">
+              {/* PDF Preview */}
+              <Card className="w-1/3 flex flex-col">
+                <div className="p-4 border-b border-slate-200">
+                  <h2 className="font-semibold text-slate-800">PDFプレビュー</h2>
+                </div>
+                <div className="flex-1 bg-slate-100 flex items-center justify-center p-4">
+                  <div className="bg-white shadow-lg rounded p-8 w-full max-w-xs">
+                    <div className="text-center text-slate-400">
+                      <SimpleIcon type="file" className="text-5xl mb-4" />
+                      <p className="text-sm">scoresheet_20260120_1430.pdf</p>
+                      <p className="text-xs text-slate-300 mt-1">1ページ</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 border-t border-slate-200 flex gap-2">
+                  <Button variant="secondary" size="sm" className="flex-1">
+                    <SimpleIcon type="search" className="mr-1" />
+                    拡大
+                  </Button>
+                  <Button variant="secondary" size="sm" className="flex-1">
+                    <SimpleIcon type="download" className="mr-1" />
+                    ダウンロード
+                  </Button>
+                </div>
+              </Card>
+
+              {/* Data Form */}
+              <Card className="flex-1 flex flex-col overflow-hidden">
+                {/* Status Bar */}
+                <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <h2 className="font-semibold text-slate-800">OCR抽出データ</h2>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-slate-500">全体信頼度:</span>
+                      <ConfidenceBadge confidence={avgConfidence} />
+                    </div>
+                  </div>
+                  {lowConfidenceCount > 0 && (
+                    <div className="flex items-center gap-2 text-amber-600 text-sm">
+                      <SimpleIcon type="alert" />
+                      <span>要確認項目: {lowConfidenceCount}件</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Form Content */}
+                <div className="flex-1 overflow-auto p-4 space-y-6">
+                  {/* Basic Info */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                      <SimpleIcon type="calendar" />
+                      基本情報
+                    </h3>
+                    <div className="space-y-1">
+                      <FieldRow label="年月日" field="date" category="basicInfo" />
+                      <FieldRow label="時間" field="time" category="basicInfo" />
+                      <FieldRow label="管理者" field="manager" category="basicInfo" />
+                      <FieldRow label="動物種" field="animalType" category="basicInfo" />
+                      <FieldRow label="個体ID" field="animalId" category="basicInfo" />
+                    </div>
+                  </div>
+
+                  {/* Numeric Data */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                      <SimpleIcon type="thermometer" />
+                      数値項目
+                    </h3>
+                    <div className="space-y-1">
+                      <FieldRow label="直腸温" field="rectalTemp" category="numericData" showRange />
+                      <FieldRow label="体重" field="weight" category="numericData" showRange />
+                    </div>
+                  </div>
+
+                  {/* Checkbox Data */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                      <SimpleIcon type="check" />
+                      観察項目
+                    </h3>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                      <CheckboxFieldRow label="食欲" field="appetite" />
+                      <CheckboxFieldRow label="元気" field="energy" />
+                      <CheckboxFieldRow label="脱水" field="dehydration" />
+                      <CheckboxFieldRow label="嘔吐" field="vomiting" />
+                      <CheckboxFieldRow label="糞便" field="feces" />
+                      <CheckboxFieldRow label="鼻汁" field="nasalDischarge" />
+                      <CheckboxFieldRow label="流淚" field="lacrimation" />
+                      <CheckboxFieldRow label="結膜炎" field="conjunctivitis" />
+                      <CheckboxFieldRow label="眼脂" field="eyeDischarge" />
+                      <CheckboxFieldRow label="発咳" field="cough" />
+                      <CheckboxFieldRow label="くしゃみ" field="sneezing" />
+                      <CheckboxFieldRow label="呼吸音異常" field="abnormalBreathing" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="p-4 border-t border-slate-200 flex items-center justify-between bg-slate-50">
+                  <Button variant="ghost">
+                    <SimpleIcon type="x" className="mr-1" />
+                    キャンセル
+                  </Button>
+                  <div className="flex gap-3">
+                    <Button variant="secondary">
+                      <SimpleIcon type="clock" className="mr-1" />
+                      保留
+                    </Button>
+                    <Button variant="success" onClick={handleExportExcel} disabled={isExporting}>
+                      <SimpleIcon type="check" className="mr-1" />
+                      {isExporting ? "出力中..." : "確定してExcel出力"}
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </main>
+        </div>
+      );
+    };
+
+    // ============================================================
+    // PAGE: DASHBOARD
+    // ============================================================
+    const DashboardPage = ({ showToast }) => {
+      const [filter, setFilter] = useState("all");
+      const [searchQuery, setSearchQuery] = useState("");
+      const [isExporting, setIsExporting] = useState(false);
+
+      const handleExportHistory = () => {
+        setIsExporting(true);
+        try {
+          ExcelExporter.exportHistory(filteredHistory, "処理履歴");
+          showToast("処理履歴をExcelファイルに出力しました", "success");
+        } catch (error) {
+          showToast("Excel出力に失敗しました", "error");
+          console.error(error);
+        } finally {
+          setIsExporting(false);
+        }
+      };
+
+      const handleExportAllScoreSheets = () => {
+        setIsExporting(true);
+        try {
+          const filename = ExcelExporter.exportScoreSheet(sampleScoreSheetDataList);
+          showToast(`スコアシート${sampleScoreSheetDataList.length}件をExcelに出力しました`, "success");
+        } catch (error) {
+          showToast("Excel出力に失敗しました", "error");
+          console.error(error);
+        } finally {
+          setIsExporting(false);
+        }
+      };
+
+      const stats = [
+        { label: "本日の処理件数", value: "12", change: "+3", positive: true },
+        { label: "要確認", value: "2", change: "-1", positive: true },
+        { label: "平均信頼度", value: "89%", change: "+2%", positive: true },
+        { label: "今月の処理件数", value: "156", change: "+23", positive: true },
+      ];
+
+      const filteredHistory = sampleHistory.filter(item => {
+        if (filter === "all") return true;
+        if (filter === "pending") return item.status === "確認中";
+        if (filter === "completed") return item.status === "完了";
+        if (filter === "error") return item.status === "エラー";
+        return true;
+      }).filter(item => {
+        if (!searchQuery) return true;
+        return item.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+               item.animal.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+
+      const getStatusBadge = (status) => {
+        const styles = {
+          "確認中": "bg-amber-100 text-amber-700",
+          "完了": "bg-emerald-100 text-emerald-700",
+          "エラー": "bg-red-100 text-red-700",
+        };
+        return (
+          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${styles[status]}`}>
+            {status}
+          </span>
+        );
+      };
+
+      return (
+        <div className="flex-1 flex flex-col">
+          <Header title="ダッシュボード" subtitle="処理状況の確認とデータエクスポート" />
+
+          <main className="flex-1 p-6 overflow-auto">
+            <div className="space-y-6 animate-fade-in">
+              {/* Stats */}
+              <div className="grid grid-cols-4 gap-4">
+                {stats.map((stat, i) => (
+                  <Card key={i} className="p-5">
+                    <p className="text-sm text-slate-500">{stat.label}</p>
+                    <div className="flex items-end justify-between mt-2">
+                      <span className="text-3xl font-bold text-slate-800 mono">{stat.value}</span>
+                      <span className={`text-sm font-medium ${stat.positive ? "text-emerald-600" : "text-red-600"}`}>
+                        {stat.change}
+                      </span>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* History Table */}
+              <Card>
+                <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+                  <h2 className="font-semibold text-slate-800">処理履歴</h2>
+                  <div className="flex items-center gap-3">
+                    {/* Search */}
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="検索..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-48"
+                      />
+                      <SimpleIcon type="search" className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    </div>
+
+                    {/* Filter */}
+                    <select
+                      value={filter}
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    >
+                      <option value="all">すべて</option>
+                      <option value="pending">確認中</option>
+                      <option value="completed">完了</option>
+                      <option value="error">エラー</option>
+                    </select>
+
+                    {/* Export History */}
+                    <Button variant="secondary" onClick={handleExportHistory} disabled={isExporting}>
+                      <SimpleIcon type="download" className="mr-2" />
+                      {isExporting ? "出力中..." : "履歴エクスポート"}
+                    </Button>
+
+                    {/* Export All Score Sheets */}
+                    <Button variant="primary" onClick={handleExportAllScoreSheets} disabled={isExporting}>
+                      <SimpleIcon type="download" className="mr-2" />
+                      {isExporting ? "出力中..." : "スコアシート一括出力"}
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Table */}
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-slate-50">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">ID</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">日付</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">時間</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">対象</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">信頼度</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">ステータス</th>
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {filteredHistory.map((item) => (
+                        <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-3 px-4 text-sm font-medium text-primary-600 mono">{item.id}</td>
+                          <td className="py-3 px-4 text-sm text-slate-600">{item.date}</td>
+                          <td className="py-3 px-4 text-sm text-slate-600 mono">{item.time}</td>
+                          <td className="py-3 px-4 text-sm text-slate-800">{item.animal}</td>
+                          <td className="py-3 px-4">
+                            <ConfidenceBadge confidence={item.confidence / 100} />
+                          </td>
+                          <td className="py-3 px-4">{getStatusBadge(item.status)}</td>
+                          <td className="py-3 px-4">
+                            <Button variant="ghost" size="sm">詳細</Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Pagination */}
+                <div className="p-4 border-t border-slate-200 flex items-center justify-between">
+                  <p className="text-sm text-slate-500">
+                    {filteredHistory.length}件中 1-{filteredHistory.length}件を表示
+                  </p>
+                  <div className="flex gap-2">
+                    <Button variant="secondary" size="sm" disabled>前へ</Button>
+                    <Button variant="secondary" size="sm" disabled>次へ</Button>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Confidence Legend */}
+              <Card className="p-4">
+                <h3 className="text-sm font-semibold text-slate-700 mb-3">信頼度の見方</h3>
+                <div className="flex gap-6">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-700 border border-emerald-300">85%+</span>
+                    <span className="text-sm text-slate-600">自動確定（高信頼）</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700 border border-amber-300">70-84%</span>
+                    <span className="text-sm text-slate-600">要確認（中信頼）</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 border border-red-300">70%未満</span>
+                    <span className="text-sm text-slate-600">要修正（低信頼）</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </main>
+        </div>
+      );
+    };
+
+    // ============================================================
+    // MAIN APP
+    // ============================================================
+    const App = () => {
+      const [currentPage, setCurrentPage] = useState("upload");
+      const [toast, setToast] = useState(null);
+
+      const showToast = (message, type = "success") => {
+        setToast({ message, type });
+      };
+
+      const renderPage = () => {
+        switch (currentPage) {
+          case "upload": return <UploadPage />;
+          case "review": return <ReviewPage showToast={showToast} />;
+          case "dashboard": return <DashboardPage showToast={showToast} />;
+          default: return <UploadPage />;
+        }
+      };
+
+      return (
+        <div className="flex h-screen bg-slate-50">
+          <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          {renderPage()}
+          {toast && (
+            <Toast
+              message={toast.message}
+              type={toast.type}
+              onClose={() => setToast(null)}
+            />
+          )}
+        </div>
+      );
+    };
+
+    // Render
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

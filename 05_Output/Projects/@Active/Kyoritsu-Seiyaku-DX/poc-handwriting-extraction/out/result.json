@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "input_pdf": "test_data/scan.pdf",
+    "template_pdf": "test_data/template.pdf",
+    "fields_json": "test_data/fields.json",
+    "page": 0,
+    "dpi": 300,
+    "threshold": 30,
+    "ocr_client": "stub"
+  },
+  "fields": {
+    "patient_name": {
+      "type": "text",
+      "bbox": [
+        625,
+        333,
+        833,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_TEXT_1]",
+      "confidence": 0.9
+    },
+    "patient_id": {
+      "type": "number",
+      "bbox": [
+        1666,
+        333,
+        416,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_NUMBER_2]",
+      "confidence": 0.95
+    },
+    "date": {
+      "type": "text",
+      "bbox": [
+        1666,
+        500,
+        625,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_TEXT_3]",
+      "confidence": 0.9
+    },
+    "score_1": {
+      "type": "number",
+      "bbox": [
+        416,
+        833,
+        250,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_NUMBER_4]",
+      "confidence": 0.95
+    },
+    "score_2": {
+      "type": "number",
+      "bbox": [
+        833,
+        833,
+        250,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_NUMBER_5]",
+      "confidence": 0.95
+    },
+    "score_3": {
+      "type": "number",
+      "bbox": [
+        1250,
+        833,
+        250,
+        125
+      ],
+      "has_content": true,
+      "text": "[STUB_NUMBER_6]",
+      "confidence": 0.95
+    },
+    "checkbox_applicable": {
+      "type": "checkbox",
+      "bbox": [
+        416,
+        1166,
+        125,
+        125
+      ],
+      "has_content": true,
+      "text": "checked",
+      "confidence": 0.9
+    },
+    "checkbox_not_applicable": {
+      "type": "checkbox",
+      "bbox": [
+        833,
+        1166,
+        125,
+        125
+      ],
+      "has_content": false,
+      "text": "unchecked",
+      "confidence": 0.8
+    },
+    "notes": {
+      "type": "text",
+      "bbox": [
+        416,
+        1458,
+        1666,
+        625
+      ],
+      "has_content": true,
+      "text": "[STUB_TEXT_9]",
+      "confidence": 0.9
+    },
+    "signature": {
+      "type": "signature",
+      "bbox": [
+        1458,
+        2291,
+        833,
+        291
+      ],
+      "has_content": true,
+      "text": "signed",
+      "confidence": 0.85
+    }
+  }
+}

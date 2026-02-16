@@ -1,0 +1,47 @@
+この画像は動物の観察記録（スコアシート）です。
+表形式のデータを正確にJSON形式で抽出してください。
+
+## 出力形式
+
+以下のJSON形式で出力してください。JSONのみを出力し、説明文は不要です。
+
+```json
+{
+  "metadata": {
+    "document_date": "YYYY-MM-DD形式の日付（読み取れない場合はnull）",
+    "observer_name": "観察者名（読み取れない場合はnull）",
+    "facility_name": "施設名（読み取れない場合はnull）"
+  },
+  "records": [
+    {
+      "animal_id": "動物識別番号（必須）",
+      "observation_time": "HH:MM形式の時刻（読み取れない場合はnull）",
+      "body_temperature": 数値（℃、読み取れない場合はnull）,
+      "body_weight": 数値（kg、読み取れない場合はnull）,
+      "appetite": "食欲の状態（読み取れない場合はnull）",
+      "activity_level": "元気・活動レベル（読み取れない場合はnull）",
+      "feces_status": "糞便状態（読み取れない場合はnull）",
+      "dehydration": true/false/null,
+      "vomiting": true/false/null,
+      "nasal_discharge": true/false/null,
+      "lacrimation": true/false/null,
+      "eye_discharge": true/false/null,
+      "coughing": true/false/null,
+      "sneezing": true/false/null,
+      "abnormal_respiratory_sounds": true/false/null,
+      "notes": "備考・特記事項（読み取れない場合はnull）"
+    }
+  ]
+}
+```
+
+## 注意事項
+
+1. 読み取れない項目や記載がない項目はnullを設定してください
+2. 推測せず、実際に記載されている情報のみを抽出してください
+3. 日本語のまま出力してください（翻訳不要）
+4. チェックマーク（✓、○など）はtrue、未チェックや×はfalseとして解釈してください
+5. 表の各行が1つのrecordに対応します
+6. 数値は単位を除いた数字のみを出力してください（例: "38.5℃" → 38.5）
+
+JSONのみを出力してください。

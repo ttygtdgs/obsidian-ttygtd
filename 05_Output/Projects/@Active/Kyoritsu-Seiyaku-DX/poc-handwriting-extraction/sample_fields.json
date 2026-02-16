@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "description": "サンプルフィールド定義 (実際の帳票に合わせて調整)",
+  "fields": [
+    {
+      "name": "patient_name",
+      "x": 200,
+      "y": 150,
+      "width": 300,
+      "height": 50,
+      "type": "text",
+      "options": {
+        "label": "患者氏名"
+      }
+    },
+    {
+      "name": "patient_id",
+      "x": 550,
+      "y": 150,
+      "width": 150,
+      "height": 50,
+      "type": "number",
+      "options": {
+        "label": "患者ID"
+      }
+    },
+    {
+      "name": "date",
+      "x": 750,
+      "y": 150,
+      "width": 200,
+      "height": 50,
+      "type": "text",
+      "options": {
+        "label": "日付"
+      }
+    },
+    {
+      "name": "score_1",
+      "x": 100,
+      "y": 300,
+      "width": 80,
+      "height": 40,
+      "type": "number",
+      "options": {
+        "label": "スコア1",
+        "min": 0,
+        "max": 10
+      }
+    },
+    {
+      "name": "score_2",
+      "x": 200,
+      "y": 300,
+      "width": 80,
+      "height": 40,
+      "type": "number",
+      "options": {
+        "label": "スコア2",
+        "min": 0,
+        "max": 10
+      }
+    },
+    {
+      "name": "score_3",
+      "x": 300,
+      "y": 300,
+      "width": 80,
+      "height": 40,
+      "type": "number",
+      "options": {
+        "label": "スコア3",
+        "min": 0,
+        "max": 10
+      }
+    },
+    {
+      "name": "checkbox_1",
+      "x": 100,
+      "y": 400,
+      "width": 30,
+      "height": 30,
+      "type": "checkbox",
+      "options": {
+        "label": "該当する"
+      }
+    },
+    {
+      "name": "checkbox_2",
+      "x": 200,
+      "y": 400,
+      "width": 30,
+      "height": 30,
+      "type": "checkbox",
+      "options": {
+        "label": "該当しない"
+      }
+    },
+    {
+      "name": "notes",
+      "x": 100,
+      "y": 500,
+      "width": 600,
+      "height": 150,
+      "type": "text",
+      "options": {
+        "label": "備考",
+        "multiline": true
+      }
+    },
+    {
+      "name": "signature",
+      "x": 600,
+      "y": 800,
+      "width": 200,
+      "height": 80,
+      "type": "signature",
+      "options": {
+        "label": "担当者署名"
+      }
+    }
+  ]
+}

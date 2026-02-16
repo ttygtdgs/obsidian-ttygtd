@@ -4,11 +4,15 @@
   "description": "このリポジトリは、PARA法とZettelkastenを組み合わせた知識管理システムです。Obsidianを使用して、日々の情報を効率的に整理・活用するための構造化されたワークスペースです。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "claude": "claude"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "latest"
+  },
   "dependencies": {
     "pptxgenjs": "^4.0.1"
   }

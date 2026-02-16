@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "description": "テスト用フィールド定義 (300dpi基準)",
+  "fields": [
+    {
+      "name": "patient_name",
+      "x": 625,
+      "y": 333,
+      "width": 833,
+      "height": 125,
+      "type": "text"
+    },
+    {
+      "name": "patient_id",
+      "x": 1666,
+      "y": 333,
+      "width": 416,
+      "height": 125,
+      "type": "number"
+    },
+    {
+      "name": "date",
+      "x": 1666,
+      "y": 500,
+      "width": 625,
+      "height": 125,
+      "type": "text"
+    },
+    {
+      "name": "score_1",
+      "x": 416,
+      "y": 833,
+      "width": 250,
+      "height": 125,
+      "type": "number"
+    },
+    {
+      "name": "score_2",
+      "x": 833,
+      "y": 833,
+      "width": 250,
+      "height": 125,
+      "type": "number"
+    },
+    {
+      "name": "score_3",
+      "x": 1250,
+      "y": 833,
+      "width": 250,
+      "height": 125,
+      "type": "number"
+    },
+    {
+      "name": "checkbox_applicable",
+      "x": 416,
+      "y": 1166,
+      "width": 125,
+      "height": 125,
+      "type": "checkbox"
+    },
+    {
+      "name": "checkbox_not_applicable",
+      "x": 833,
+      "y": 1166,
+      "width": 125,
+      "height": 125,
+      "type": "checkbox"
+    },
+    {
+      "name": "notes",
+      "x": 416,
+      "y": 1458,
+      "width": 1666,
+      "height": 625,
+      "type": "text"
+    },
+    {
+      "name": "signature",
+      "x": 1458,
+      "y": 2291,
+      "width": 833,
+      "height": 291,
+      "type": "signature"
+    }
+  ]
+}

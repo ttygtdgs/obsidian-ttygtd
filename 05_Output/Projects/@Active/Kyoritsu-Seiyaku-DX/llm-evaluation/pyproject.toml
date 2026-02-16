@@ -1,0 +1,57 @@
+[project]
+name = "llm-evaluation"
+version = "0.1.0"
+description = "LLM model evaluation framework for PDF data extraction"
+requires-python = ">=3.11"
+dependencies = [
+    # LLM API SDKs
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+    "google-generativeai>=0.8.0",
+
+    # PDF処理
+    "PyMuPDF>=1.24.0",
+    "Pillow>=10.0.0",
+
+    # データ処理・検証
+    "pydantic>=2.0.0",
+    "jsonschema>=4.0.0",
+
+    # 非同期処理
+    "aiohttp>=3.9.0",
+
+    # CLI・設定
+    "typer>=0.12.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+
+    # レポート生成
+    "jinja2>=3.1.0",
+    "tabulate>=0.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.5.0",
+    "mypy>=1.10.0",
+]
+
+[project.scripts]
+llm-eval = "src.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true

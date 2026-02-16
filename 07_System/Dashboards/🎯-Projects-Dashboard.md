@@ -7,6 +7,13 @@ FROM "05_Output/Projects/@Active"
 SORT priority ASC
 ```
 
+## 🏢 自社事業プロジェクト
+```dataview
+TABLE status, priority, due
+FROM "05_Output/Projects/@Active/Own-"
+SORT priority ASC
+```
+
 ## ブロッカー
 - SURVIBE AI: Week3課題の演習環境
 - YouTube: EP02の撮影スタジオ確保
