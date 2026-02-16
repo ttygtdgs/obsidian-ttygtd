@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "06-チャネル別アクションプラン-社内議論用"
+              "title": "07-頭出し-施策1&2-概要すり合わせ"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "頭出し",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -248,7 +248,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -268,6 +269,7 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/チャネル戦略-施策1&2_NTTDXPN.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/generate-channel-strategy-pptx.cjs",
@@ -303,7 +305,6 @@
     "99_Archive/20251119_Xリンク調査メモ.md",
     "99_Archive/20251118_Xリンク調査メモ.md",
     "03_Input/リンクストック-あとで読む.md",
-    "99_Archive/2025-11-19.md",
     "無題のファイル.canvas",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/window.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/vercel.svg",
