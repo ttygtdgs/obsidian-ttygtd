@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "08-サービスページ改善分析レポート"
+              "title": "07-頭出し-施策1&2-概要すり合わせ"
             }
           }
         ],
@@ -112,8 +112,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "サービスページ改善",
-                "matchingCase": true,
+                "query": "頭出し",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -269,9 +269,9 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md.tmp.9041.1771231993088",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
-    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/チャネル戦略-施策1&2_NTTDXPN.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/generate-channel-strategy-pptx.cjs",
@@ -290,7 +290,6 @@
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/~$2026-01-社内議論用-共立製薬提案.pptx",
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/r2_講義スライド-データ利活用のススメ.pptx",
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/~$r1_講義スライド-データ利活用のススメ.pptx",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/r1_講義スライド-データ利活用のススメ.pptx",
     "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning/共立製薬-生成AI実証実験-提案方針整理.md",
     "2025-11-19.md",
     "00_Memo/アプリアイデアメモ.md",
