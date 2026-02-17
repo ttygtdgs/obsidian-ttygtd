@@ -131,15 +131,15 @@ s3.addTable(phaseRows, {
 });
 
 // Amount table
-s3.addText("落札金額（金額判明分のみ）", {
-  x: 0.4, y: 3.9, w: 4, h: 0.3, fontSize: 13, bold: true, color: C.text, fontFace: F
+s3.addText("落札金額 合計（カッコ内は金額判明件数）", {
+  x: 0.4, y: 3.9, w: 6, h: 0.3, fontSize: 13, bold: true, color: C.text, fontFace: F
 });
 
 const amtRows = [
   [hdr("年度"), hdr("①研修"), hdr("②設計"), hdr("③PoC"), hdr("④構築"), hdr("⑤運用"), hdr("合計")],
-  [cellL("FY2023",{bold:true}), cell("10万"), cell("-"), cell("3,173万"), cell("3.7億"), cell("2.4億"), highlight("6.4億")],
-  [cellL("FY2024",{bold:true}), cell("6,050万"), cell("-"), cell("4,274万"), cell("4.5億"), cell("4.6億"), highlight("10.1億")],
-  [highlightL("FY2025"), highlight("8,834万"), highlight("-"), highlight("1,400万"), highlight("2.0億"), highlight("11.6億"), highlight("14.6億")],
+  [cellL("FY2023",{bold:true}), cell("10万\n(1/4件)",{fontSize:9}), cell("-\n(0/6件)",{fontSize:9}), cell("3,173万\n(5/6件)",{fontSize:9}), cell("3.7億\n(40/72件)",{fontSize:9}), cell("2.4億\n(25/42件)",{fontSize:9}), highlight("6.4億\n(71/130件)",{fontSize:9})],
+  [cellL("FY2024",{bold:true}), cell("6,050万\n(7/15件)",{fontSize:9}), cell("-\n(0/6件)",{fontSize:9}), cell("4,274万\n(7/12件)",{fontSize:9}), cell("4.5億\n(60/132件)",{fontSize:9}), cell("4.6億\n(43/67件)",{fontSize:9}), highlight("10.1億\n(117/232件)",{fontSize:9})],
+  [highlightL("FY2025"), highlight("8,834万\n(10/18件)",{fontSize:9}), highlight("-\n(0/8件)",{fontSize:9}), highlight("1,400万\n(4/7件)",{fontSize:9}), highlight("2.0億\n(44/130件)",{fontSize:9}), highlight("11.6億\n(42/62件)",{fontSize:9}), highlight("14.6億\n(100/225件)",{fontSize:9})],
 ];
 
 s3.addTable(amtRows, {
