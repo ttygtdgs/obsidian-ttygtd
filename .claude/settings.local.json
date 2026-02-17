@@ -117,7 +117,13 @@
       "WebFetch(domain:www.fixer.co.jp)",
       "WebFetch(domain:www.pref.osaka.lg.jp)",
       "WebFetch(domain:www.softbank.jp)",
-      "WebFetch(domain:www.kknews.co.jp)"
+      "WebFetch(domain:www.kknews.co.jp)",
+      "WebFetch(domain:note.com)",
+      "WebFetch(domain:www.city.minato.tokyo.jp)",
+      "WebFetch(domain:ascii.jp)",
+      "WebFetch(domain:xexeq.jp)",
+      "WebFetch(domain:www.gaixer.com)",
+      "WebFetch(domain:www.dnp.co.jp)"
     ]
   }
 }

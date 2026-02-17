@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/03-公募案件分析-入札王データ.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-公募案件分析-入札王データ"
+              "title": "09-自治体生成AI案件-市場調査レポート"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "入札王",
+                "query": "市場調査レポート",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -269,6 +269,16 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/13-RAG案件詳細調査.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/12-落札済み大型案件調査.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/11-応札可能案件調査-中部西日本.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/10-応札可能案件調査-東日本.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-RAG案件詳細調査.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/04-応札可能案件調査-東日本.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/04-応札可能案件調査-東日本.md.tmp.87444.1771296946737",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-落札済み大型案件調査.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/03-公募案件分析-入札王データ.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/05-応札可能案件調査-中部西日本.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
@@ -290,21 +300,11 @@
     "05_Output/Projects/@Active/NTTDX-Cases/00-NTTDX案件マスター.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/~$2026-01-社内議論用-共立製薬提案.pptx",
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/r2_講義スライド-データ利活用のススメ.pptx",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/02-materials/~$r1_講義スライド-データ利活用のススメ.pptx",
     "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning/共立製薬-生成AI実証実験-提案方針整理.md",
     "2025-11-19.md",
     "00_Memo/アプリアイデアメモ.md",
     "01_Inbox/2025-11-25-長野案件-社内相談内容.md",
     "01_Inbox/2025-11-25-長野案件-データベース構築-提案案整理.md",
-    "00_Memo/2025-11-25-長野案件-データベース構築.md",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/00-プロジェクト概要.md",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-Jリーグサッカー.md",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-Bリーグバスケットボール.md",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソン用データセット情報-プロ野球.md",
-    "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/アイデアソンシナリオ素案.md",
-    "02_Daily/2025/2025-11/2025-11-25/2025-11-25-TODO.md",
-    "02_Daily/2025/2025-11/2025-11-25/2025-11-25-Daily.md",
-    "99_Archive/20251119_Xリンク調査メモ.md",
     "無題のファイル.canvas",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/window.svg",
     "05_Output/Projects/@Active/SURVIBE-AI-Dec2025/website/public/vercel.svg",
