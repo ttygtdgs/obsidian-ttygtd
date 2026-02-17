@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "09-自治体生成AI案件-市場調査レポート"
+              "title": "16-施策1&2-アクションプランすり合わせ"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "市場調査レポート",
+                "query": "アクションプランすり合わせ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -269,6 +269,8 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/~$FY2026-自治体生成AI案件-フェーズ別見通し.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/15-自治体案件-攻め方整理.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/FY2026-自治体生成AI案件-フェーズ別見通し.pptx",
@@ -284,7 +286,6 @@
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/04-応札可能案件調査-東日本.md.tmp.87444.1771296946737",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-落札済み大型案件調査.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/03-公募案件分析-入札王データ.md",
-    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/05-応札可能案件調査-中部西日本.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
