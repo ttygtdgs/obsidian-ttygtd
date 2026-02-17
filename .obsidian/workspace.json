@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/03-公募案件分析-入札王データ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "07-頭出し-施策1&2-概要すり合わせ"
+              "title": "03-公募案件分析-入札王データ"
             }
           }
         ],
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "頭出し",
+                "query": "入札王",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -269,9 +269,10 @@
   },
   "active": "fddd3914625e18d2",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/05-応札可能案件調査-中部西日本.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/08-サービスページ改善分析レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md.tmp.9041.1771231993088",
-    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/07-頭出し-施策1&2-概要すり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/06-チャネル別アクションプラン-社内議論用.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/チャネル戦略-施策1&2_NTTDXPN.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/generate-channel-strategy-pptx.cjs",
