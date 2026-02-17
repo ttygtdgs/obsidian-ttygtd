@@ -368,17 +368,136 @@ strengths.forEach((st, i) => {
 });
 
 // ==============================
-// Slide 8: End
+// Slide 8: 攻め方整理
 // ==============================
 let s8 = pres.addSlide();
+addHeader(s8, "自治体案件 — 攻め方整理");
+
+// 全体像: 3つのチャネル
+s8.addText("獲得チャネル", {
+  x: 0.4, y: 0.9, w: 3, h: 0.3, fontSize: 12, bold: true, color: C.main, fontFace: F
+});
+
+// Channel 1: 入札キング
+const chX1 = 0.5;
 s8.addShape(pres.ShapeType.rect, {
+  x: chX1, y: 1.25, w: 2.9, h: 2.2,
+  fill: { color: C.white },
+  shadow: { type: "outer", blur: 3, offset: 1, angle: 45, opacity: 0.15 }
+});
+s8.addShape(pres.ShapeType.rect, { x: chX1, y: 1.25, w: 2.9, h: 0.06, fill: { color: C.main } });
+s8.addText("① 入札キング", {
+  x: chX1 + 0.15, y: 1.4, w: 2.6, h: 0.3, fontSize: 13, bold: true, color: C.main, fontFace: F
+});
+s8.addText("モニタリング", {
+  x: chX1 + 0.15, y: 1.65, w: 2.6, h: 0.25, fontSize: 11, color: C.sub, fontFace: F
+});
+s8.addShape(pres.ShapeType.rect, { x: chX1 + 0.15, y: 1.95, w: 2.6, h: 0.015, fill: { color: C.border } });
+s8.addText(
+  "• 公募案件の週次モニタリング\n" +
+  "• Medium帯(500万〜3000万)を全件チェック\n" +
+  "• 48.7%が1社応札\n  → 応札すれば勝てる案件が約半数\n" +
+  "• 対象: ④構築・⑤運用",
+  { x: chX1 + 0.15, y: 2.0, w: 2.6, h: 1.3, fontSize: 9, color: C.text, fontFace: F, lineSpacing: 15, valign: "top" }
+);
+
+// Channel 2: 支店ロビー活動
+const chX2 = 3.55;
+s8.addShape(pres.ShapeType.rect, {
+  x: chX2, y: 1.25, w: 2.9, h: 2.2,
+  fill: { color: "EDF7FA" },
+  line: { color: C.main, pt: 2 }
+});
+s8.addShape(pres.ShapeType.rect, { x: chX2, y: 1.25, w: 2.9, h: 0.06, fill: { color: C.main } });
+// 推奨バッジ
+s8.addShape(pres.ShapeType.rect, { x: chX2 + 1.9, y: 1.25, w: 0.95, h: 0.3, fill: { color: C.orange } });
+s8.addText("メイン", { x: chX2 + 1.9, y: 1.27, w: 0.95, h: 0.27, fontSize: 10, bold: true, color: C.white, fontFace: F, align: "center" });
+s8.addText("② NTT東 支店ロビー", {
+  x: chX2 + 0.15, y: 1.4, w: 2.6, h: 0.3, fontSize: 13, bold: true, color: C.main, fontFace: F
+});
+s8.addText("BI本部経由", {
+  x: chX2 + 0.15, y: 1.65, w: 2.6, h: 0.25, fontSize: 11, color: C.sub, fontFace: F
+});
+s8.addShape(pres.ShapeType.rect, { x: chX2 + 0.15, y: 1.95, w: 2.6, h: 0.015, fill: { color: C.border } });
+s8.addText(
+  "• BI本部にAI商材を打ち込み\n" +
+  "• 支店長勉強会でネタ提供\n  （井上さん主幹・ネタ募集中）\n" +
+  "• 支店営業から案件紹介を獲得\n" +
+  "• 対象: ①研修・③PoC → アップセル",
+  { x: chX2 + 0.15, y: 2.0, w: 2.6, h: 1.3, fontSize: 9, color: C.text, fontFace: F, lineSpacing: 15, valign: "top" }
+);
+
+// Channel 3: 直接アプローチ
+const chX3 = 6.6;
+s8.addShape(pres.ShapeType.rect, {
+  x: chX3, y: 1.25, w: 2.9, h: 2.2,
+  fill: { color: C.white },
+  shadow: { type: "outer", blur: 3, offset: 1, angle: 45, opacity: 0.15 }
+});
+s8.addShape(pres.ShapeType.rect, { x: chX3, y: 1.25, w: 2.9, h: 0.06, fill: { color: C.main } });
+s8.addText("③ 直接アプローチ", {
+  x: chX3 + 0.15, y: 1.4, w: 2.6, h: 0.3, fontSize: 13, bold: true, color: C.main, fontFace: F
+});
+s8.addText("不調案件・既存顧客", {
+  x: chX3 + 0.15, y: 1.65, w: 2.6, h: 0.25, fontSize: 11, color: C.sub, fontFace: F
+});
+s8.addShape(pres.ShapeType.rect, { x: chX3 + 0.15, y: 1.95, w: 2.6, h: 0.015, fill: { color: C.border } });
+s8.addText(
+  "• 入札不調案件の再公募対応\n  （例: 岡山市）\n" +
+  "• NTT東既存自治体顧客への\n  直接提案（千葉県・北海道型）\n" +
+  "• 対象: ④構築・⑤運用",
+  { x: chX3 + 0.15, y: 2.0, w: 2.6, h: 1.3, fontSize: 9, color: C.text, fontFace: F, lineSpacing: 15, valign: "top" }
+);
+
+// Timeline
+s8.addText("支店ロビー活動 タイムライン", {
+  x: 0.4, y: 3.6, w: 5, h: 0.3, fontSize: 12, bold: true, color: C.text, fontFace: F
+});
+
+// Timeline flow
+const tlSteps = [
+  { label: "3月", sub: "ロビー活動開始", detail: "BI本部へ商材打ち込み\n井上さんへコンタクト", active: false },
+  { label: "4月（メイン）", sub: "支店展開", detail: "支店長勉強会で発表\n案件発見チェックリスト配布", active: true },
+  { label: "5月〜", sub: "案件紹介開始", detail: "支店営業から案件紹介\n自治体新年度予算執行", active: false },
+];
+tlSteps.forEach((t, i) => {
+  const x = 0.5 + i * 3.1;
+  s8.addShape(pres.ShapeType.roundRect, {
+    x, y: 3.95, w: 2.9, h: 1.35,
+    fill: { color: t.active ? "EDF7FA" : C.light },
+    line: { color: t.active ? C.main : C.border, pt: t.active ? 1.5 : 0.5 },
+    rectRadius: 0.05
+  });
+  s8.addText(t.label, {
+    x: x + 0.1, y: 4.0, w: 2.7, h: 0.3,
+    fontSize: 13, bold: true, color: t.active ? C.main : C.text, fontFace: F
+  });
+  s8.addText(t.sub, {
+    x: x + 0.1, y: 4.3, w: 2.7, h: 0.25,
+    fontSize: 10, bold: true, color: C.sub, fontFace: F
+  });
+  s8.addShape(pres.ShapeType.rect, { x: x + 0.1, y: 4.58, w: 2.7, h: 0.012, fill: { color: C.border } });
+  s8.addText(t.detail, {
+    x: x + 0.1, y: 4.62, w: 2.7, h: 0.6,
+    fontSize: 9, color: C.text, fontFace: F, lineSpacing: 15, valign: "top"
+  });
+  if (i < tlSteps.length - 1) {
+    s8.addText("→", { x: x + 2.85, y: 4.3, w: 0.3, h: 0.4, fontSize: 18, color: C.main, fontFace: F, align: "center" });
+  }
+});
+
+// ==============================
+// Slide 9: End
+// ==============================
+let s9 = pres.addSlide();
+s9.addShape(pres.ShapeType.rect, {
   x: 0, y: 0, w: "100%", h: "100%", fill: { color: C.main }
 });
-s8.addText("ご清聴ありがとうございました", {
+s9.addText("ご清聴ありがとうございました", {
   x: 0, y: 2.2, w: 10, h: 0.7,
   fontSize: 32, bold: true, color: C.white, fontFace: F, align: "center"
 });
-s8.addImage({ path: `${assets}/logo.png`, x: 3.95, y: 3.5, w: 2.1, h: 0.5 });
+s9.addImage({ path: `${assets}/logo.png`, x: 3.95, y: 3.5, w: 2.1, h: 0.5 });
 
 // Save
 const outDir = path.join(process.env.HOME, "Desktop/obsidian-ttygtd/05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials");
