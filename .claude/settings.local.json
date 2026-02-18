@@ -126,7 +126,8 @@
       "WebFetch(domain:www.dnp.co.jp)",
       "WebFetch(domain:www.snowflake.com)",
       "WebFetch(domain:www.revefi.com)",
-      "WebFetch(domain:qrvey.com)"
+      "WebFetch(domain:qrvey.com)",
+      "WebFetch(domain:select.dev)"
     ]
   }
 }
