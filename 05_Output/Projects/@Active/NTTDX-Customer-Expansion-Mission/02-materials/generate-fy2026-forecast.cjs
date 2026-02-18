@@ -167,7 +167,7 @@ s3.addTable(amtRows, {
   border: { pt: 0.5, color: C.border }, valign: "middle"
 });
 
-s3.addText("*FY2025④構築にはNEDO大型R&D案件（149.7億等）を含む。中央値: ④構築376万 / ⑤運用341万 / ③PoC1,723万（平均は大型案件で大幅上振れ）", {
+s3.addText("*FY2025④構築にはNEDO大型R&D案件（149.7億等）を含む。中央値: ④構築475万 / ⑤運用346万 / ③PoC1,749万（平均は大型案件で大幅上振れ）", {
   x: 0.4, y: 5.35, w: 9.2, h: 0.2, fontSize: 8, color: C.sub, fontFace: F
 });
 
@@ -253,15 +253,15 @@ s5.addText("全公共セクターの構築案件754件の内訳 — 年度推移
 
 const subRows = [
   [hdr("サブカテゴリ",{fontSize:9}), hdr("FY23",{fontSize:9}), hdr("FY24",{fontSize:9}), hdr("FY25",{fontSize:9}), hdr("合計",{fontSize:9}), hdr("中央値",{fontSize:9}), hdr("平均",{fontSize:9}), hdr("トレンド",{fontSize:9})],
-  [cellL("AI（その他）",{bold:true}), cell("46"), cell("88"), highlight("93"), cell("227"), cell("215万"), cell("1,188万",{color:C.sub,fontSize:9}), cellL("平均は大型R&Dで上振れ",{fontSize:9})],
+  [cellL("AI（その他）",{bold:true}), cell("46"), cell("88"), highlight("93"), cell("227"), cell("490万"), cell("1,188万",{color:C.sub,fontSize:9}), cellL("平均は大型R&Dで上振れ",{fontSize:9})],
   [cellL("チャットボット",{bold:true}), cell("58"), cell("61"), highlight("51"), cell("170"), cell("336万"), cell("3,259万",{color:C.sub,fontSize:9}), cellL("減少傾向。市場飽和",{fontSize:9})],
-  [cellL("生成AI（その他）",{bold:true}), cell("16"), cell("60"), highlight("62"), cell("138"), cell("772万",{bold:true,color:C.main}), cell("1.4億",{color:C.sub,fontSize:9}), cellL("NEDO等で平均大幅上振れ",{fontSize:9})],
+  [cellL("生成AI（その他）",{bold:true}), cell("16"), cell("60"), highlight("62"), cell("138"), cell("785万",{bold:true,color:C.main}), cell("1.4億",{color:C.sub,fontSize:9}), cellL("NEDO等で平均大幅上振れ",{fontSize:9})],
   [cellL("生成AIサービス導入",{bold:true}), cell("10"), cell("46"), highlight("58"), cell("114"), cell("428万"), cell("4,905万",{color:C.sub,fontSize:9}), cellL("急成長。SaaS型主流化",{fontSize:9,color:"2E7D32",bold:true})],
-  [cellL("RAG構築",{bold:true}), cell("11"), cell("16"), highlight("24"), cell("51"), cell("182万"), cell("427万",{color:C.sub,fontSize:9}), cellL("着実増加。技術差別化",{fontSize:9,color:"2E7D32",bold:true})],
+  [cellL("RAG構築",{bold:true}), cell("11"), cell("16"), highlight("24"), cell("51"), cell("245万"), cell("427万",{color:C.sub,fontSize:9}), cellL("着実増加。技術差別化",{fontSize:9,color:"2E7D32",bold:true})],
   [cellL("庁内生成AI環境",{bold:true}), cell("4"), cell("9"), highlight("10"), cell("23"), cell("-"), cell("-",{fontSize:9}), cellL("安定推移",{fontSize:9})],
   [cellL("教育・学校AI",{bold:true}), cell("3"), cell("7"), highlight("7"), cell("17"), cell("3,960万",{bold:true,color:C.main}), cell("3,758万",{color:C.sub,fontSize:9}), cellL("高単価。N=3",{fontSize:9})],
   [cellL("活用支援・コンサル",{bold:true}), cell("0"), cell("2"), highlight("8"), cell("10"), cell("254万"), cell("527万",{color:C.sub,fontSize:9}), cellL("急拡大中",{fontSize:9,color:"2E7D32",bold:true})],
-  [highlightL("合計"), highlight("148"), highlight("291"), highlight("315"), highlight("754"), highlight("376万"), highlight("6,388万"), highlightL("")],
+  [highlightL("合計"), highlight("148"), highlight("291"), highlight("315"), highlight("754"), highlight("475万"), highlight("7,058万"), highlightL("")],
 ];
 
 s5.addTable(subRows, {
@@ -280,9 +280,9 @@ s5.addText("注目ポイント", {
   x: 0.6, y: 4.35, w: 2, h: 0.25, fontSize: 11, bold: true, color: C.main, fontFace: F
 });
 s5.addText(
-  "✓  ④構築全体の中央値は376万円（平均6,388万はNEDO等の大型R&Dで上振れ）。NTTDXPNの主戦場はMedium帯\n" +
+  "✓  ④構築全体の中央値は475万円（平均7,058万はNEDO等の大型R&Dで上振れ）。NTTDXPNの主戦場はMedium帯\n" +
   "✓  生成AIサービス導入が最大成長カテゴリ（10→46→58件）。中央値428万でSaaS型が主流\n" +
-  "✓  教育・学校AI は中央値3,960万の高単価領域。RAG構築は技術差別化で勝負",
+  "✓  教育・学校AI は中央値3,960万の高単価領域。RAG構築（中央値245万）は技術差別化で勝負",
   { x: 0.6, y: 4.62, w: 8.8, h: 0.65, fontSize: 10, color: C.text, fontFace: F, lineSpacing: 18 }
 );
 
