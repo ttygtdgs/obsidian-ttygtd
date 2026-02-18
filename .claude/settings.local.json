@@ -127,7 +127,11 @@
       "WebFetch(domain:www.snowflake.com)",
       "WebFetch(domain:www.revefi.com)",
       "WebFetch(domain:qrvey.com)",
-      "WebFetch(domain:select.dev)"
+      "WebFetch(domain:select.dev)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:ttygtdgs-kyoritsu-scoresheet-demo-dashboard.streamlit.app)",
+      "WebFetch(domain:kyoritsu-scoresheet-demo.streamlit.app)",
+      "WebFetch(domain:kyoritsu-scoresheet-demo-cvvubmuhpicxbq8cwlasox.streamlit.app)"
     ]
   }
 }

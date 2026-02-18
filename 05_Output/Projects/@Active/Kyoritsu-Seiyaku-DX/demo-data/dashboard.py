@@ -1,11 +1,15 @@
 """
 共立製薬 スコアシート分析ダッシュボード
 ========================================
-デモ用Streamlitアプリ（CSVデータソース）
+デモ用Streamlitアプリ（Snowflake / CSVフォールバック）
 
 起動方法:
     cd demo-data
     streamlit run dashboard.py
+
+Snowflake接続:
+    .streamlit/secrets.toml に接続情報を記入
+    接続失敗時はローカルCSVにフォールバック
 """
 
 import pathlib
@@ -15,6 +19,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
+
+try:
+    import snowflake.connector
+    HAS_SNOWFLAKE = True
+except ImportError:
+    HAS_SNOWFLAKE = False
 
 # ---------------------------------------------------------------------------
 # 設定
@@ -52,11 +62,48 @@ COLOR_TREATED = "#1f77b4"
 COLOR_CONTROL = "#ff7f0e"
 
 # ---------------------------------------------------------------------------
-# データ読み込み & ビュー構築
+# Snowflake接続
 # ---------------------------------------------------------------------------
 
-@st.cache_data
-def load_data():
+def _get_snowflake_connection():
+    """Streamlit secretsからSnowflake接続を取得"""
+    sf = st.secrets["snowflake"]
+    return snowflake.connector.connect(
+        account=sf["account"],
+        user=sf["user"],
+        password=sf["password"],
+        warehouse=sf["warehouse"],
+        database=sf["database"],
+        schema=sf["schema"],
+    )
+
+
+def _load_from_snowflake():
+    """Snowflakeからデータを読み込む"""
+    conn = _get_snowflake_connection()
+    try:
+        study = pd.read_sql("SELECT * FROM STUDY", conn)
+        sheet = pd.read_sql("SELECT * FROM SCORE_SHEET", conn)
+        df = pd.read_sql("SELECT * FROM V_OBSERVATION_DETAIL", conn)
+    finally:
+        conn.close()
+
+    # Snowflakeはカラム名を大文字で返すため小文字に統一
+    study.columns = study.columns.str.lower()
+    sheet.columns = sheet.columns.str.lower()
+    df.columns = df.columns.str.lower()
+
+    # datetime変換
+    df["observed_at"] = pd.to_datetime(df["observed_at"])
+    df["observation_date"] = df["observed_at"].dt.date
+    df["study_period_start"] = pd.to_datetime(df["study_period_start"])
+
+    obs = df  # KPI用カウントに使用
+    return study, sheet, obs, df
+
+
+def _load_from_csv():
+    """ローカルCSVからデータを読み込む（フォールバック）"""
     study = pd.read_csv(CSV_DIR / "study.csv")
     sheet = pd.read_csv(CSV_DIR / "score_sheet.csv")
     obs = pd.read_csv(CSV_DIR / "observation.csv")
@@ -84,6 +131,24 @@ def load_data():
     df["total_clinical_score"] = df[CLINICAL_ITEMS].sum(axis=1)
 
     return study, sheet, obs, df
+
+
+# ---------------------------------------------------------------------------
+# データ読み込み（Snowflake優先 → CSVフォールバック）
+# ---------------------------------------------------------------------------
+
+@st.cache_data(ttl=600)
+def load_data():
+    if HAS_SNOWFLAKE and "snowflake" in st.secrets:
+        try:
+            data = _load_from_snowflake()
+            st.sidebar.success("Snowflake接続中", icon="❄️")
+            return data
+        except Exception as e:
+            st.sidebar.warning(f"Snowflake接続失敗: {e}")
+
+    st.sidebar.info("ローカルCSVモード", icon="📁")
+    return _load_from_csv()
 
 
 study_df, sheet_df, obs_df, detail_df = load_data()
