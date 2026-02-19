@@ -133,7 +133,10 @@
       "WebFetch(domain:kyoritsu-scoresheet-demo.streamlit.app)",
       "WebFetch(domain:kyoritsu-scoresheet-demo-cvvubmuhpicxbq8cwlasox.streamlit.app)",
       "Bash(git push:*)",
-      "Bash(pip install Pillow)"
+      "Bash(pip install Pillow)",
+      "Bash(SRC=\"/Users/user/Desktop/obsidian-ttygtd/05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data\")",
+      "Bash(DEST=\"/tmp/kyoritsu-demo\")",
+      "Bash(rsync:*)"
     ]
   }
 }
