@@ -132,7 +132,8 @@
       "WebFetch(domain:ttygtdgs-kyoritsu-scoresheet-demo-dashboard.streamlit.app)",
       "WebFetch(domain:kyoritsu-scoresheet-demo.streamlit.app)",
       "WebFetch(domain:kyoritsu-scoresheet-demo-cvvubmuhpicxbq8cwlasox.streamlit.app)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(pip install Pillow)"
     ]
   }
 }
