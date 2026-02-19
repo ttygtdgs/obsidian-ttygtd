@@ -30,7 +30,7 @@ except ImportError:
 # 設定
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="共立製薬 スコアシート分析",
+    page_title="共立製薬様デモ スコアシート分析",
     page_icon="🔬",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -194,7 +194,7 @@ st.sidebar.title("スコアシート分析")
 st.sidebar.markdown("---")
 page = st.sidebar.radio("ページ選択", list(PAGES.keys()))
 st.sidebar.markdown("---")
-st.sidebar.caption("共立製薬 データ基盤デモ")
+st.sidebar.caption("共立製薬様デモ")
 
 # ---------------------------------------------------------------------------
 # Page 1: 概要ダッシュボード
