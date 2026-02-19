@@ -11,6 +11,7 @@ CSVファイルとして出力する。
   ./csv/study.csv
   ./csv/score_sheet.csv
   ./csv/observation.csv
+  ./csv/audit_log.csv
 """
 
 import csv
@@ -285,6 +286,32 @@ def generate():
                 scores = sim.observe(day)
                 observer = random.choice(OBSERVERS)
 
+                # 異常スコア合計を計算して画像パス判定
+                clinical_items_for_total = [
+                    "appetite", "energy", "dehydration", "vomiting", "feces",
+                    "coughing", "sneezing", "respiratory_abnormal",
+                ]
+                lr_items = ["nasal_discharge", "lacrimation", "eye_discharge", "conjunctivitis"]
+                total_score = sum(scores.get(c, 0) for c in clinical_items_for_total)
+                for lr in lr_items:
+                    total_score += max(scores.get(f"{lr}_l", 0), scores.get(f"{lr}_r", 0))
+
+                # image_path: 高スコア時に主要症状の画像パスを設定
+                image_path = ""
+                if total_score >= 3:
+                    # 最も高いスコアの症状を特定
+                    symptom_scores = {}
+                    for c in ["vomiting", "coughing", "respiratory_abnormal", "dehydration"]:
+                        if scores.get(c, 0) >= 1:
+                            symptom_scores[c] = scores[c]
+                    for lr in lr_items:
+                        val = max(scores.get(f"{lr}_l", 0), scores.get(f"{lr}_r", 0))
+                        if val >= 2:
+                            symptom_scores[lr] = val
+                    if symptom_scores:
+                        top_symptom = max(symptom_scores, key=symptom_scores.get)
+                        image_path = f"images/{animal_def['animal_id']}_day{day:02d}_{top_symptom}.png"
+
                 obs = {
                     "observation_id": uid(),
                     "score_sheet_id": ss_id,
@@ -292,12 +319,95 @@ def generate():
                     "observer_name": observer,
                     **scores,
                     "remarks": "",
+                    "image_path": image_path,
                     "created_at": observed_at,
                     "created_by": observer,
                 }
                 observations.append(obs)
 
     return studies, score_sheets, observations
+
+
+def generate_audit_log(observations):
+    """観察レコードからデモ用監査ログを生成する"""
+    audit_logs = []
+
+    # 全観察レコードのINSERT
+    for obs in observations:
+        audit_logs.append({
+            "log_id": uid(),
+            "timestamp": obs["created_at"],
+            "user_name": obs["created_by"],
+            "operation": "INSERT",
+            "table_name": "OBSERVATION",
+            "record_id": obs["observation_id"],
+            "field_name": "",
+            "old_value": "",
+            "new_value": "",
+            "reason": "初回登録",
+        })
+
+    # 一部レコードのUPDATE（5〜10件）
+    update_candidates = [o for o in observations if o["rectal_temperature"] >= 39.0]
+    random.shuffle(update_candidates)
+    update_targets = update_candidates[:8]
+
+    update_reasons = [
+        "記入ミス修正",
+        "再計測による修正",
+        "転記ミス修正",
+        "確認者による修正",
+        "小数点以下の記録漏れ修正",
+    ]
+
+    for obs in update_targets:
+        obs_dt = datetime.strptime(obs["created_at"][:19], "%Y-%m-%d %H:%M:%S")
+        update_dt = obs_dt + timedelta(hours=random.randint(1, 4), minutes=random.randint(0, 59))
+
+        updater = random.choice(OBSERVERS)
+        reason = random.choice(update_reasons)
+
+        # 体温修正
+        old_temp = obs["rectal_temperature"]
+        new_temp = round(old_temp + random.choice([-0.3, -0.2, -0.1, 0.1, 0.2, 0.3]), 1)
+        audit_logs.append({
+            "log_id": uid(),
+            "timestamp": update_dt.strftime("%Y-%m-%d %H:%M:%S"),
+            "user_name": updater,
+            "operation": "UPDATE",
+            "table_name": "OBSERVATION",
+            "record_id": obs["observation_id"],
+            "field_name": "rectal_temperature",
+            "old_value": str(old_temp),
+            "new_value": str(new_temp),
+            "reason": reason,
+        })
+
+    # スコア修正（2〜3件追加）
+    score_candidates = [o for o in observations if o["appetite"] >= 1]
+    random.shuffle(score_candidates)
+    for obs in score_candidates[:3]:
+        obs_dt = datetime.strptime(obs["created_at"][:19], "%Y-%m-%d %H:%M:%S")
+        update_dt = obs_dt + timedelta(hours=random.randint(2, 6), minutes=random.randint(0, 59))
+
+        old_val = obs["appetite"]
+        new_val = max(0, old_val - 1)
+        audit_logs.append({
+            "log_id": uid(),
+            "timestamp": update_dt.strftime("%Y-%m-%d %H:%M:%S"),
+            "user_name": random.choice(OBSERVERS),
+            "operation": "UPDATE",
+            "table_name": "OBSERVATION",
+            "record_id": obs["observation_id"],
+            "field_name": "appetite",
+            "old_value": str(old_val),
+            "new_value": str(new_val),
+            "reason": random.choice(update_reasons),
+        })
+
+    # タイムスタンプでソート
+    audit_logs.sort(key=lambda x: x["timestamp"])
+    return audit_logs
 
 
 def write_csv(filename, rows, fieldnames):
@@ -341,11 +451,25 @@ def main():
         "eye_discharge_l", "eye_discharge_r",
         "conjunctivitis_l", "conjunctivitis_r",
         "coughing", "sneezing", "respiratory_abnormal",
-        "remarks", "created_at", "created_by",
+        "remarks", "image_path", "created_at", "created_by",
+    ])
+
+    # 監査ログ生成
+    print(f"\n監査ログ生成中...")
+    audit_logs = generate_audit_log(observations)
+    print(f"  監査ログ: {len(audit_logs)} 件（INSERT: {sum(1 for a in audit_logs if a['operation'] == 'INSERT')}, UPDATE: {sum(1 for a in audit_logs if a['operation'] == 'UPDATE')}）")
+
+    write_csv("audit_log.csv", audit_logs, [
+        "log_id", "timestamp", "user_name", "operation",
+        "table_name", "record_id", "field_name",
+        "old_value", "new_value", "reason",
     ])
 
     print(f"\n完了! CSVファイルは {OUTPUT_DIR} に出力されました。")
-    print(f"次のステップ: upload_to_snowflake.sql を Snowflake で実行してください。")
+    print(f"次のステップ:")
+    print(f"  1. python generate_demo_images.py  (プレースホルダー画像生成)")
+    print(f"  2. streamlit run dashboard.py  (ダッシュボード起動)")
+    print(f"  3. upload_to_snowflake.sql を Snowflake で実行")
 
 
 if __name__ == "__main__":
