@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
+                "file": "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "16-施策1&2-アクションプランすり合わせ"
+              "title": "iPad-スコアシート入力アプリ-プロダクト仕様書"
             }
           }
         ]
@@ -63,8 +63,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "アクションプランすり合わせ",
-                "matchingCase": false,
+                "query": "iPad",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -220,6 +220,8 @@
   },
   "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/00-プロジェクト概要.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/02-materials/~$データ基盤メリット提案_共立製薬_NTTDXPN.pptx",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/__pycache__/dashboard.cpython-313.pyc",
@@ -244,7 +246,6 @@
     "05_Output/Projects/@Active/NTTDX-Tokyo-Agriculture-School/01-planning/WBS-スクラッチ開発-2026年3月開始.md",
     "05_Output/Projects/@Active/NTTDX-Cases/00-NTTDX案件マスター.md",
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/2026-02-アイデアソンKPT振り返り.md",
-    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/15-自治体案件-攻め方整理.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/14-FY2026-フェーズ別案件見通し.md",
@@ -265,7 +266,6 @@
     "05_Output/Projects/@Active/NTTDX-Hokkaido-Sapporo/01-planning/データ活用パターン集-アイデアソン設計用.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/03-入札キング分析レポート.md",
     "05_Output/Areas/Business/Corporate-Training/Client-List/clients-database.md",
-    "05_Output/Projects/@Active/NTTDX-Chukikicho/01-planning/農業高校-予約ページ-AI活用アイデア.md",
     "無題のファイル.canvas"
   ]
 }
