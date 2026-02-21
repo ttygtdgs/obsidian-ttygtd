@@ -136,7 +136,14 @@
       "Bash(pip install Pillow)",
       "Bash(SRC=\"/Users/user/Desktop/obsidian-ttygtd/05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data\")",
       "Bash(DEST=\"/tmp/kyoritsu-demo\")",
-      "Bash(rsync:*)"
+      "Bash(rsync:*)",
+      "WebFetch(domain:familycorporation.co.jp)",
+      "WebFetch(domain:www.renosy.com)",
+      "WebFetch(domain:www.propertyagent.co.jp)",
+      "WebFetch(domain:well-lab.jp)",
+      "WebFetch(domain:asset-academy.co)",
+      "WebFetch(domain:apart.familycorporation.co.jp)",
+      "WebFetch(domain:v-tsushin.jp)"
     ]
   }
 }
