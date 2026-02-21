@@ -152,7 +152,16 @@
       "WebFetch(domain:link.springer.com)",
       "WebFetch(domain:www.researchgate.net)",
       "WebFetch(domain:www.mdpi.com)",
-      "WebFetch(domain:www.emerald.com)"
+      "WebFetch(domain:www.emerald.com)",
+      "WebFetch(domain:ads.smartnews.com)",
+      "WebFetch(domain:xtrend.nikkei.com)",
+      "WebFetch(domain:jpreturns.com)",
+      "WebFetch(domain:www.fjnext.com)",
+      "WebFetch(domain:ads.tiktok.com)",
+      "WebFetch(domain:renosy.mints.ne.jp)",
+      "WebFetch(domain:www.global-link-m.com)",
+      "WebFetch(domain:www.global-link-seminar.com)",
+      "WebFetch(domain:investor-kzo.com)"
     ]
   }
 }
