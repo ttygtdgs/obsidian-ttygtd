@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Shinshu-Sandbox/2026-02-信州型サンドボックス事業-参入分析.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "09-自治体生成AI案件-市場調査レポート"
+              "title": "2026-02-信州型サンドボックス事業-参入分析"
             }
           }
         ]
@@ -219,6 +219,7 @@
   },
   "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
     "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale",
@@ -251,7 +252,6 @@
     "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
     "あとで読む.md",
-    "05_Output/Projects/@Active/Matsuo-Institute/02-materials/論文サーベイ-落合スタイル-厳選10本.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning",
     "05_Output/Projects/@Active/Matsuo-Institute",
