@@ -11,14 +11,24 @@
             "id": "e2f3da92e77874f0",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "無題のファイル.base",
-                "bFile": "無題のファイル.base",
-                "aRef": ""
+                "file": "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "diff",
-              "title": "Diff: 無題のファイル.base  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "瀬戸内国際芸術祭2025_データ分析報告書"
             }
           }
         ]
@@ -53,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "瀬戸内",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +84,8 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -206,12 +217,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0a14b4c29820dff7",
+  "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
+    "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
+    "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
+    "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale",
+    "02_Daily/2026-02-23-Daily.md",
+    "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning/共立製薬-生成AI実証実験-提案方針整理.md",
     "無題のファイル.base",
     "無題のカンバン.md",
     "無題のファイル 1.canvas",
-    "02_Daily/2026-02-23-Daily.md",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning/LPO-CRO論文サーベイ.md",
     "03_Input/リンクストック-あとで読む.md",
     "03_Input/this-week-focus.md",
@@ -237,13 +252,10 @@
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
     "あとで読む.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials/論文サーベイ-落合スタイル-厳選10本.md",
-    "05_Output/Projects/@Active/Matsuo-Institute/02-materials/Gemini-DeepResearch-不動産デジタルマーケティング.md",
-    "05_Output/Projects/@Active/Matsuo-Institute/02-materials/Gemini-DeepResearch-LPO-CRO総合研究.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning",
     "05_Output/Projects/@Active/Matsuo-Institute",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/02-materials/~$データ基盤メリット提案_共立製薬_NTTDXPN.pptx",
-    "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/__pycache__/dashboard.cpython-313.pyc",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_dehydration.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_coughing.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day06_nasal_discharge.png",
