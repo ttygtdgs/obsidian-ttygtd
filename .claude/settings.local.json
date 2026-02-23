@@ -163,7 +163,8 @@
       "WebFetch(domain:www.global-link-seminar.com)",
       "WebFetch(domain:investor-kzo.com)",
       "Bash(xargs:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }
