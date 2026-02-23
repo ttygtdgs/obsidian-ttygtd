@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
+                "file": "05_Output/Projects/@Active/Matsuo-Institute/01-planning/LPO-CRO論文サーベイ.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "iPad-スコアシート入力アプリ-プロダクト仕様書"
+              "title": "LPO-CRO論文サーベイ"
             }
           }
         ]
@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "iPad",
+                "query": "論文",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -220,6 +220,8 @@
   },
   "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
+    "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
     "あとで読む.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials/論文サーベイ-落合スタイル-厳選10本.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials/Gemini-DeepResearch-不動産デジタルマーケティング.md",
@@ -229,13 +231,11 @@
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning/LPO-CRO論文サーベイ.md",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning/ファミリーコーポレーション-調査レポート.md",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning/サーベイ方法論-AI系開発PJ.md",
-    "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials",
     "05_Output/Projects/@Active/Matsuo-Institute/01-planning",
     "05_Output/Projects/@Active/Matsuo-Institute",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/00-プロジェクト概要.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/16-施策1&2-アクションプランすり合わせ.md",
-    "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/01-planning/iPad-スコアシート入力アプリ-プロダクト仕様書.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/02-materials/~$データ基盤メリット提案_共立製薬_NTTDXPN.pptx",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/__pycache__/dashboard.cpython-313.pyc",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/__pycache__",
