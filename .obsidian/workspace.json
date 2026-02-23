@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "瀬戸内国際芸術祭2025_データ分析報告書"
+              "title": "09-自治体生成AI案件-市場調査レポート"
             }
           }
         ]
@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "瀬戸内",
+                "query": "信州型",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -219,8 +219,8 @@
   },
   "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
-    "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
+    "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale",
     "02_Daily/2026-02-23-Daily.md",
     "05_Output/Projects/@Planning/NTTDX-Kyoritsu-GenAI-PoC/01-planning/共立製薬-生成AI実証実験-提案方針整理.md",
