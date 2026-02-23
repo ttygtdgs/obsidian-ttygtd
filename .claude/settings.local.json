@@ -161,7 +161,9 @@
       "WebFetch(domain:renosy.mints.ne.jp)",
       "WebFetch(domain:www.global-link-m.com)",
       "WebFetch(domain:www.global-link-seminar.com)",
-      "WebFetch(domain:investor-kzo.com)"
+      "WebFetch(domain:investor-kzo.com)",
+      "Bash(xargs:*)",
+      "Bash(awk:*)"
     ]
   }
 }
