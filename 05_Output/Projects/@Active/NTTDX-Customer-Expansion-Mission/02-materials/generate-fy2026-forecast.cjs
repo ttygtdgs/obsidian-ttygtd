@@ -45,10 +45,10 @@ s1.addText("NTT DXパートナー", {
 s1.addText("公共セクター生成AI案件\nFY2026 フェーズ別見通し", {
   x: 0.6, y: 2.0, w: 8, h: 1.0, fontSize: 34, bold: true, color: C.white, fontFace: F, lineSpacing: 45
 });
-s1.addText("入札キング2,500件分析 + 個別案件調査に基づく市場見通し", {
+s1.addText("入札キング2,507件分析 + 個別案件調査に基づく市場見通し", {
   x: 0.6, y: 3.1, w: 8, h: 0.4, fontSize: 16, color: C.white, fontFace: F
 });
-s1.addText("2026年2月18日", {
+s1.addText("2026年2月24日", {
   x: 0.6, y: 4.9, w: 2, h: 0.3, fontSize: 12, color: C.white, fontFace: F
 });
 s1.addImage({ path: `${assets}/logo.png`, x: 7.4, y: 4.5, w: 2.0, h: 0.47 });
@@ -61,9 +61,9 @@ addHeader(s2, "市場全体像 — 年度成長と発注機関タイプ");
 
 // Big numbers: 3 year trend
 const years = [
-  { fy: "FY2023", count: "231件", amt: "46.9億円", growth: "" },
-  { fy: "FY2024", count: "457件", amt: "102.8億円", growth: "+98%" },
-  { fy: "FY2025", count: "495件", amt: "225.1億円*", growth: "+8%" },
+  { fy: "FY2023", count: "246件", amt: "67.9億円", growth: "" },
+  { fy: "FY2024", count: "468件", amt: "90.7億円", growth: "+90%" },
+  { fy: "FY2025", count: "533件", amt: "233.0億円*", growth: "+14%" },
 ];
 years.forEach((y, i) => {
   const x = 0.5 + i * 3.1;
@@ -94,12 +94,12 @@ s2.addText("発注機関タイプ別 内訳", {
 
 const agencyRows = [
   [hdr("機関タイプ"), hdr("FY2023"), hdr("FY2024"), hdr("FY2025"), hdr("合計"), hdr("構成比")],
-  [cellL("都道府県",{bold:true}), cell("43"), cell("80"), highlight("106"), cell("229"), cell("19%")],
-  [cellL("市区町村",{bold:true}), cell("67"), cell("143"), highlight("149"), cell("359"), cell("30%")],
-  [cellL("国",{bold:true}), cell("28"), cell("73"), highlight("85"), cell("186"), cell("16%")],
-  [cellL("独法",{bold:true}), cell("61"), cell("117"), highlight("108"), cell("286"), cell("24%")],
-  [cellL("その他",{bold:true}), cell("32"), cell("44"), highlight("47"), cell("123"), cell("10%")],
-  [highlightL("合計"), highlight("231"), highlight("457"), highlight("495"), highlight("1,183"), highlight("100%")],
+  [cellL("都道府県",{bold:true}), cell("46"), cell("91"), highlight("117"), cell("254"), cell("20%")],
+  [cellL("市区町村",{bold:true}), cell("64"), cell("138"), highlight("158"), cell("360"), cell("29%")],
+  [cellL("国",{bold:true}), cell("34"), cell("74"), highlight("98"), cell("206"), cell("17%")],
+  [cellL("独法",{bold:true}), cell("65"), cell("120"), highlight("112"), cell("297"), cell("24%")],
+  [cellL("その他",{bold:true}), cell("37"), cell("45"), highlight("48"), cell("130"), cell("10%")],
+  [highlightL("合計"), highlight("246"), highlight("468"), highlight("533"), highlight("1,247"), highlight("100%")],
 ];
 
 s2.addTable(agencyRows, {
@@ -111,9 +111,9 @@ s2.addTable(agencyRows, {
 
 // Pie-chart-like summary cards (right side)
 const segments = [
-  { label: "自治体", pct: "50%", count: "588件", color: C.main, note: "NTT東支店連携\nの主戦場" },
-  { label: "国+独法", pct: "40%", count: "472件", color: C.accent, note: "NTTデータ連携\nで狙える領域" },
-  { label: "その他", pct: "10%", count: "123件", color: C.gold, note: "" },
+  { label: "自治体", pct: "49%", count: "614件", color: C.main, note: "NTT東支店連携\nの主戦場" },
+  { label: "国+独法", pct: "40%", count: "503件", color: C.accent, note: "NTTデータ連携\nで狙える領域" },
+  { label: "その他", pct: "10%", count: "130件", color: C.gold, note: "" },
 ];
 segments.forEach((seg, i) => {
   const y = 3.1 + i * 0.7;
@@ -134,12 +134,12 @@ addHeader(s3, "フェーズ別 — 年度推移と成長率");
 
 const phaseRows = [
   [hdr("フェーズ"), hdr("FY2023"), hdr("FY2024"), hdr("FY2025\n(11ヶ月)"), hdr("FY23→24"), hdr("FY24→25"), hdr("特徴")],
-  [cellL("①研修",{bold:true, color: C.main}), cell("5"), cell("17"), highlight("23"), cell("+240%",{color:"2E7D32",bold:true}), cell("+35%"), cellL("AI法施行で需要増",{fontSize:9})],
+  [cellL("①研修",{bold:true, color: C.main}), cell("3"), cell("15"), highlight("19"), cell("+400%",{color:"2E7D32",bold:true}), cell("+27%"), cellL("AI法施行で需要増",{fontSize:9})],
   [cellL("②設計(RFI)",{bold:true, color: C.main}), cell("6"), cell("9"), highlight("9"), cell("+50%"), cell("±0%"), cellL("翌年構築の先行指標",{fontSize:9})],
-  [cellL("③PoC",{bold:true, color: C.main}), cell("20"), cell("53"), highlight("33"), cell("+165%",{color:"2E7D32",bold:true}), cell("-38%",{color:"C62828"}), cellL("国R&D実証が多い",{fontSize:9})],
-  [cellL("④構築",{bold:true, color: C.main}), cell("148"), cell("291"), highlight("315"), cell("+97%",{color:"2E7D32",bold:true}), cell("+8%"), cellL("最大ボリュームゾーン",{fontSize:9})],
-  [cellL("⑤運用",{bold:true, color: C.main}), cell("52"), cell("87"), highlight("115"), cell("+67%",{color:"2E7D32",bold:true}), cell("+32%",{color:"2E7D32",bold:true}), cellL("ストック型。加速中",{fontSize:9})],
-  [highlightL("合計"), highlight("231"), highlight("457"), highlight("495"), highlight("+98%"), highlight("+8%"), highlightL("")],
+  [cellL("③PoC",{bold:true, color: C.main}), cell("21"), cell("53"), highlight("44"), cell("+152%",{color:"2E7D32",bold:true}), cell("-17%",{color:"C62828"}), cellL("国R&D実証が多い",{fontSize:9})],
+  [cellL("④構築",{bold:true, color: C.main}), cell("161"), cell("295"), highlight("339"), cell("+83%",{color:"2E7D32",bold:true}), cell("+15%"), cellL("最大ボリュームゾーン",{fontSize:9})],
+  [cellL("⑤運用",{bold:true, color: C.main}), cell("55"), cell("96"), highlight("122"), cell("+75%",{color:"2E7D32",bold:true}), cell("+27%",{color:"2E7D32",bold:true}), cellL("ストック型。加速中",{fontSize:9})],
+  [highlightL("合計"), highlight("246"), highlight("468"), highlight("533"), highlight("+90%"), highlight("+14%"), highlightL("")],
 ];
 
 s3.addTable(phaseRows, {
@@ -156,9 +156,9 @@ s3.addText("落札金額 合計（カッコ内は金額判明件数 / 全件数�
 
 const amtRows = [
   [hdr("年度"), hdr("①研修"), hdr("②設計"), hdr("③PoC"), hdr("④構築"), hdr("⑤運用"), hdr("合計")],
-  [cellL("FY2023",{bold:true}), cell("146万\n(3/5件)",{fontSize:9}), cell("-\n(0/6件)",{fontSize:9}), cell("8.6億\n(18/20件)",{fontSize:9}), cell("36.5億\n(86/148件)",{fontSize:9}), cell("1.7億\n(29/52件)",{fontSize:9}), highlight("46.9億\n(136/231件)",{fontSize:9})],
-  [cellL("FY2024",{bold:true}), cell("2,787万\n(9/17件)",{fontSize:9}), cell("-\n(0/9件)",{fontSize:9}), cell("17.8億\n(34/53件)",{fontSize:9}), cell("68.2億\n(147/291件)",{fontSize:9}), cell("16.4億\n(59/87件)",{fontSize:9}), highlight("102.8億\n(249/457件)",{fontSize:9})],
-  [highlightL("FY2025"), highlight("8,880万\n(14/23件)",{fontSize:9}), highlight("-\n(0/9件)",{fontSize:9}), highlight("4.5億\n(17/33件)",{fontSize:9}), highlight("188.6億*\n(147/315件)",{fontSize:9}), highlight("31.2億\n(77/115件)",{fontSize:9}), highlight("225.1億\n(255/495件)",{fontSize:9})],
+  [cellL("FY2023",{bold:true}), cell("146万\n(3件)",{fontSize:9}), cell("-\n(0/6件)",{fontSize:9}), cell("8.6億\n(17/21件)",{fontSize:9}), cell("50.3億\n(94/161件)",{fontSize:9}), cell("8.9億\n(34/55件)",{fontSize:9}), highlight("67.9億\n(148/246件)",{fontSize:9})],
+  [cellL("FY2024",{bold:true}), cell("2,559万\n(8件)",{fontSize:9}), cell("-\n(0/9件)",{fontSize:9}), cell("12.5億\n(29/53件)",{fontSize:9}), cell("66.7億\n(145/295件)",{fontSize:9}), cell("11.2億\n(65/96件)",{fontSize:9}), highlight("90.7億\n(247/468件)",{fontSize:9})],
+  [highlightL("FY2025"), highlight("2,501万\n(11/19件)",{fontSize:9}), highlight("-\n(0/9件)",{fontSize:9}), highlight("10.0億\n(26/44件)",{fontSize:9}), highlight("190.6億*\n(156/339件)",{fontSize:9}), highlight("32.1億\n(78/122件)",{fontSize:9}), highlight("233.0億\n(271/533件)",{fontSize:9})],
 ];
 
 s3.addTable(amtRows, {
@@ -167,7 +167,7 @@ s3.addTable(amtRows, {
   border: { pt: 0.5, color: C.border }, valign: "middle"
 });
 
-s3.addText("*FY2025④構築にはNEDO大型R&D案件（149.7億等）を含む。中央値: ④構築475万 / ⑤運用346万 / ③PoC1,749万（平均は大型案件で大幅上振れ）", {
+s3.addText("*FY2025④構築にはNEDO大型R&D案件（149.7億等）を含む。中央値: ④構築494万 / ⑤運用352万 / ③PoC1,370万（平均は大型案件で大幅上振れ）", {
   x: 0.4, y: 5.35, w: 9.2, h: 0.2, fontSize: 8, color: C.sub, fontFace: F
 });
 
@@ -197,9 +197,9 @@ drivers.forEach((d, i) => {
 
 // 3 scenario cards
 const scenarios = [
-  { label: "保守的", growth: "+10%", cases: "~594件", sub1: "自治体~300件", sub2: "国独法~240件", bg: C.light },
-  { label: "基本", growth: "+20%", cases: "~648件", sub1: "自治体~330件", sub2: "国独法~260件", bg: "EDF7FA" },
-  { label: "楽観的", growth: "+35%", cases: "~729件", sub1: "自治体~370件", sub2: "国独法~290件", bg: C.light },
+  { label: "保守的", growth: "+10%", cases: "~639件", sub1: "自治体~320件", sub2: "国独法~255件", bg: C.light },
+  { label: "基本", growth: "+20%", cases: "~697件", sub1: "自治体~350件", sub2: "国独法~280件", bg: "EDF7FA" },
+  { label: "楽観的", growth: "+35%", cases: "~784件", sub1: "自治体~395件", sub2: "国独法~315件", bg: C.light },
 ];
 scenarios.forEach((sc, i) => {
   const x = 0.5 + i * 3.1;
@@ -219,19 +219,19 @@ scenarios.forEach((sc, i) => {
   s4.addText(sc.sub2, { x: x + 0.15, y: 3.75, w: 2.6, h: 0.22, fontSize: 10, color: C.sub, fontFace: F });
 });
 
-s4.addText("※FY2025推計12ヶ月（~540件）を基準に算出", {
+s4.addText("※FY2025推計12ヶ月（~581件）を基準に算出", {
   x: 0.5, y: 4.1, w: 5, h: 0.2, fontSize: 8, color: C.sub, fontFace: F
 });
 
 // Phase breakdown (basic scenario)
 const fy26Rows = [
   [hdr("フェーズ"), hdr("FY2025\n(推計12ヶ月)"), hdr("FY2026\n推計"), hdr("成長率"), hdr("成長ドライバー")],
-  [cellL("①研修",{bold:true}), cell("~25件"), highlight("~40件"), cell("+60%",{bold:true,color:"2E7D32"}), cellL("AI法施行→全職員研修需要",{fontSize:9})],
+  [cellL("①研修",{bold:true}), cell("~21件"), highlight("~35件"), cell("+67%",{bold:true,color:"2E7D32"}), cellL("AI法施行→全職員研修需要",{fontSize:9})],
   [cellL("②設計",{bold:true}), cell("~10件"), highlight("~15件"), cell("+50%"), cellL("ロードマップ策定・RFI発出増",{fontSize:9})],
-  [cellL("③PoC",{bold:true}), cell("~36件"), highlight("~52件"), cell("+44%"), cellL("源内実証、市区町村の入口",{fontSize:9})],
-  [cellL("④構築",{bold:true}), cell("~344件"), highlight("~410件"), cell("+19%"), cellL("RAG・全庁導入+国機関基盤構築",{fontSize:9})],
-  [cellL("⑤運用",{bold:true}), cell("~125件"), highlight("~165件"), cell("+32%",{bold:true,color:"2E7D32"}), cellL("FY24-25構築案件の運用移行",{fontSize:9})],
-  [highlightL("合計"), highlight("~540件"), highlight("~682件"), highlight("+26%"), highlightL("")],
+  [cellL("③PoC",{bold:true}), cell("~48件"), highlight("~60件"), cell("+25%"), cellL("源内実証、市区町村の入口",{fontSize:9})],
+  [cellL("④構築",{bold:true}), cell("~370件"), highlight("~430件"), cell("+16%"), cellL("RAG・全庁導入+国機関基盤構築",{fontSize:9})],
+  [cellL("⑤運用",{bold:true}), cell("~133件"), highlight("~165件"), cell("+24%",{bold:true,color:"2E7D32"}), cellL("FY24-25構築案件の運用移行",{fontSize:9})],
+  [highlightL("合計"), highlight("~581件"), highlight("~705件"), highlight("+21%"), highlightL("")],
 ];
 
 s4.addTable(fy26Rows, {
@@ -247,21 +247,21 @@ s4.addTable(fy26Rows, {
 let s5 = pres.addSlide();
 addHeader(s5, "④構築 サブカテゴリ別分析");
 
-s5.addText("全公共セクターの構築案件754件の内訳 — 年度推移と単価（中央値/平均）", {
+s5.addText("全公共セクターの構築案件795件の内訳 — 年度推移と単価（中央値/平均）", {
   x: 0.4, y: 0.85, w: 8, h: 0.25, fontSize: 11, color: C.sub, fontFace: F
 });
 
 const subRows = [
   [hdr("サブカテゴリ",{fontSize:9}), hdr("FY23",{fontSize:9}), hdr("FY24",{fontSize:9}), hdr("FY25",{fontSize:9}), hdr("合計",{fontSize:9}), hdr("中央値",{fontSize:9}), hdr("平均",{fontSize:9}), hdr("トレンド",{fontSize:9})],
-  [cellL("AI（その他）",{bold:true}), cell("46"), cell("88"), highlight("93"), cell("227"), cell("490万"), cell("1,188万",{color:C.sub,fontSize:9}), cellL("平均は大型R&Dで上振れ",{fontSize:9})],
-  [cellL("チャットボット",{bold:true}), cell("58"), cell("61"), highlight("51"), cell("170"), cell("336万"), cell("3,259万",{color:C.sub,fontSize:9}), cellL("減少傾向。市場飽和",{fontSize:9})],
-  [cellL("生成AI（その他）",{bold:true}), cell("16"), cell("60"), highlight("62"), cell("138"), cell("785万",{bold:true,color:C.main}), cell("1.4億",{color:C.sub,fontSize:9}), cellL("NEDO等で平均大幅上振れ",{fontSize:9})],
-  [cellL("生成AIサービス導入",{bold:true}), cell("10"), cell("46"), highlight("58"), cell("114"), cell("428万"), cell("4,905万",{color:C.sub,fontSize:9}), cellL("急成長。SaaS型主流化",{fontSize:9,color:"2E7D32",bold:true})],
-  [cellL("RAG構築",{bold:true}), cell("11"), cell("16"), highlight("24"), cell("51"), cell("245万"), cell("427万",{color:C.sub,fontSize:9}), cellL("着実増加。技術差別化",{fontSize:9,color:"2E7D32",bold:true})],
-  [cellL("庁内生成AI環境",{bold:true}), cell("4"), cell("9"), highlight("10"), cell("23"), cell("-"), cell("-",{fontSize:9}), cellL("安定推移",{fontSize:9})],
-  [cellL("教育・学校AI",{bold:true}), cell("3"), cell("7"), highlight("7"), cell("17"), cell("3,960万",{bold:true,color:C.main}), cell("3,758万",{color:C.sub,fontSize:9}), cellL("高単価。N=3",{fontSize:9})],
-  [cellL("活用支援・コンサル",{bold:true}), cell("0"), cell("2"), highlight("8"), cell("10"), cell("254万"), cell("527万",{color:C.sub,fontSize:9}), cellL("急拡大中",{fontSize:9,color:"2E7D32",bold:true})],
-  [highlightL("合計"), highlight("148"), highlight("291"), highlight("315"), highlight("754"), highlight("475万"), highlight("7,058万"), highlightL("")],
+  [cellL("生成AI（その他）",{bold:true}), cell("31"), cell("121"), highlight("138"), cell("290"), cell("871万",{bold:true,color:C.main}), cell("1.6億",{color:C.sub,fontSize:9}), cellL("最多カテゴリ。NEDO等で平均大幅上振れ",{fontSize:9})],
+  [cellL("チャットボット",{bold:true}), cell("71"), cell("61"), highlight("56"), cell("188"), cell("363万"), cell("2,644万",{color:C.sub,fontSize:9}), cellL("緩やかに減少。市場成熟",{fontSize:9})],
+  [cellL("RAG構築",{bold:true}), cell("40"), cell("48"), highlight("42"), cell("130"), cell("282万"), cell("1,410万",{color:C.sub,fontSize:9}), cellL("安定推移。技術差別化",{fontSize:9,color:"2E7D32",bold:true})],
+  [cellL("生成AIサービス導入",{bold:true}), cell("7"), cell("43"), highlight("57"), cell("107"), cell("335万"), cell("3,785万",{color:C.sub,fontSize:9}), cellL("急成長。SaaS型主流化",{fontSize:9,color:"2E7D32",bold:true})],
+  [cellL("AI（その他）",{bold:true}), cell("11"), cell("13"), highlight("23"), cell("47"), cell("649万"), cell("1,462万",{color:C.sub,fontSize:9}), cellL("増加傾向",{fontSize:9})],
+  [cellL("活用支援・コンサル",{bold:true}), cell("0"), cell("5"), highlight("15"), cell("20"), cell("254万"), cell("527万",{color:C.sub,fontSize:9}), cellL("急拡大中",{fontSize:9,color:"2E7D32",bold:true})],
+  [cellL("教育・学校AI",{bold:true}), cell("0"), cell("3"), highlight("7"), cell("10"), cell("3,960万",{bold:true,color:C.main}), cell("3,758万",{color:C.sub,fontSize:9}), cellL("高単価。N=3",{fontSize:9})],
+  [cellL("庁内生成AI環境",{bold:true}), cell("1"), cell("1"), highlight("1"), cell("3"), cell("-"), cell("-",{fontSize:9}), cellL("金額データなし",{fontSize:9})],
+  [highlightL("合計"), highlight("161"), highlight("295"), highlight("339"), highlight("795"), highlight("494万"), highlight("7,621万"), highlightL("")],
 ];
 
 s5.addTable(subRows, {
@@ -280,9 +280,9 @@ s5.addText("注目ポイント", {
   x: 0.6, y: 4.35, w: 2, h: 0.25, fontSize: 11, bold: true, color: C.main, fontFace: F
 });
 s5.addText(
-  "✓  ④構築全体の中央値は475万円（平均7,058万はNEDO等の大型R&Dで上振れ）。NTTDXPNの主戦場はMedium帯\n" +
-  "✓  生成AIサービス導入が最大成長カテゴリ（10→46→58件）。中央値428万でSaaS型が主流\n" +
-  "✓  教育・学校AI は中央値3,960万の高単価領域。RAG構築（中央値245万）は技術差別化で勝負",
+  "✓  ④構築全体の中央値は494万円（平均7,621万はNEDO等の大型R&Dで上振れ）。NTTDXPNの主戦場はMedium帯\n" +
+  "✓  生成AIサービス導入が最大成長カテゴリ（7→43→57件）。SaaS型導入が主流化\n" +
+  "✓  教育・学校AI は中央値3,960万の高単価領域。活用支援・コンサル（0→5→15件）が急拡大中",
   { x: 0.6, y: 4.62, w: 8.8, h: 0.65, fontSize: 10, color: C.text, fontFace: F, lineSpacing: 18 }
 );
 
@@ -299,12 +299,12 @@ s6.addText("FY2025実績ベース — セクターごとに狙うフェーズが
 // Matrix table
 const matrixRows = [
   [hdr("フェーズ"), hdr("自治体\n(都道府県+市区町村)"), hdr("国・独法"), hdr("合計"), hdr("自治体\n比率"), hdr("ポイント")],
-  [cellL("①研修",{bold:true,color:C.main}), cell("16件",{bold:true}), cell("7件"), highlight("23件"), cell("70%",{bold:true,color:C.main}), cellL("自治体中心。NTT東支店のネタ",{fontSize:9})],
-  [cellL("②設計",{bold:true,color:C.main}), cell("7件",{bold:true}), cell("2件"), highlight("9件"), cell("78%",{bold:true,color:C.main}), cellL("ほぼ自治体。翌年案件の予兆",{fontSize:9})],
-  [cellL("③PoC",{bold:true,color:C.main}), cell("7件"), cell("26件",{bold:true}), highlight("33件"), cell("21%",{color:"C62828"}), cellL("国R&Dが8割。大型実証案件",{fontSize:9})],
-  [cellL("④構築",{bold:true,color:C.main}), cell("151件"), cell("164件",{bold:true}), highlight("315件"), cell("48%"), cellL("自治体・国ほぼ半々",{fontSize:9})],
-  [cellL("⑤運用",{bold:true,color:C.main}), cell("73件",{bold:true}), cell("42件"), highlight("115件"), cell("63%",{bold:true,color:C.main}), cellL("自治体ストック収益の柱",{fontSize:9})],
-  [highlightL("合計"), highlight("254件"), highlight("241件"), highlight("495件"), highlight("51%"), highlightL("")],
+  [cellL("①研修",{bold:true,color:C.main}), cell("~13件",{bold:true}), cell("~6件"), highlight("19件"), cell("~70%",{bold:true,color:C.main}), cellL("自治体中心。NTT東支店のネタ",{fontSize:9})],
+  [cellL("②設計",{bold:true,color:C.main}), cell("~7件",{bold:true}), cell("~2件"), highlight("9件"), cell("~78%",{bold:true,color:C.main}), cellL("ほぼ自治体。翌年案件の予兆",{fontSize:9})],
+  [cellL("③PoC",{bold:true,color:C.main}), cell("~10件"), cell("~34件",{bold:true}), highlight("44件"), cell("~23%",{color:"C62828"}), cellL("国R&Dが8割。大型実証案件",{fontSize:9})],
+  [cellL("④構築",{bold:true,color:C.main}), cell("~170件"), cell("~169件",{bold:true}), highlight("339件"), cell("~50%"), cellL("自治体・国ほぼ半々",{fontSize:9})],
+  [cellL("⑤運用",{bold:true,color:C.main}), cell("~76件",{bold:true}), cell("~46件"), highlight("122件"), cell("~62%",{bold:true,color:C.main}), cellL("自治体ストック収益の柱",{fontSize:9})],
+  [highlightL("合計"), highlight("~275件"), highlight("~210件"), highlight("533件"), highlight("52%"), highlightL("")],
 ];
 
 s6.addTable(matrixRows, {
@@ -326,7 +326,7 @@ s6.addText("自治体の攻め方", { x: 0.75, y: 3.65, w: 3.5, h: 0.3, fontSize
 s6.addText(
   "①研修・②設計が入口（自治体比率70-78%）\n" +
   "→ ④構築へアップセル\n" +
-  "→ ⑤運用でストック収益化（63%が自治体）\n\n" +
+  "→ ⑤運用でストック収益化（62%が自治体）\n\n" +
   "NTT東 支店ロビー活動がキーチャネル\n" +
   "Medium帯（500万〜3,000万）が主戦場",
   { x: 0.75, y: 4.0, w: 3.9, h: 1.3, fontSize: 10, color: C.text, fontFace: F, lineSpacing: 16, valign: "top" }
@@ -341,10 +341,10 @@ s6.addShape(pres.ShapeType.rect, {
 s6.addShape(pres.ShapeType.rect, { x: 5.1, y: 3.55, w: 0.08, h: 1.9, fill: { color: C.accent } });
 s6.addText("国・独法の攻め方", { x: 5.35, y: 3.65, w: 3.5, h: 0.3, fontSize: 13, bold: true, color: C.main, fontFace: F });
 s6.addText(
-  "③PoCが入口（国比率79%）\n" +
+  "③PoCが入口（国比率77%）\n" +
   "→ R&D実証（数億〜数十億円規模）\n" +
-  "→ ④構築で半数の164件が国・独法\n\n" +
-  "NTTデータ（17件/8.9億）連携がカギ\n" +
+  "→ ④構築で半数の169件が国・独法\n\n" +
+  "NTTデータ（10件/2.0億）連携がカギ\n" +
   "源内関連案件（デジ庁・財務省）に注目",
   { x: 5.35, y: 4.0, w: 3.9, h: 1.3, fontSize: 10, color: C.text, fontFace: F, lineSpacing: 16, valign: "top" }
 );
@@ -365,7 +365,7 @@ s7.addText("が1社応札", { x: 2.2, y: 1.65, w: 2, h: 0.3, fontSize: 14, color
 s7.addText("参入するだけで落札できる案件が約半数。\n特に地方案件・Medium帯で競争が少ない。", {
   x: 0.75, y: 2.1, w: 3.8, h: 0.5, fontSize: 10, color: C.sub, fontFace: F, lineSpacing: 18
 });
-s7.addText("全1,207件中、金額判明は約50%（~640件）。\n随意契約・少額案件を含めると市場は2-3倍。", {
+s7.addText("全1,269件中、金額判明は約54%（683件）。\n随意契約・少額案件を含めると市場は2-3倍。", {
   x: 0.75, y: 2.6, w: 3.8, h: 0.4, fontSize: 9, color: C.sub, fontFace: F, lineSpacing: 16
 });
 
@@ -374,15 +374,15 @@ s7.addShape(pres.ShapeType.rect, { x: 5.2, y: 1.0, w: 4.3, h: 2.2, fill: { color
 s7.addShape(pres.ShapeType.rect, { x: 5.2, y: 1.0, w: 0.08, h: 2.2, fill: { color: C.accent } });
 s7.addText("NTTグループ実績", { x: 5.45, y: 1.1, w: 3.5, h: 0.3, fontSize: 13, bold: true, color: C.main, fontFace: F });
 
-s7.addText("66件 / 14.3億円", { x: 5.45, y: 1.5, w: 3.5, h: 0.4, fontSize: 22, bold: true, color: C.main, fontFace: F });
-s7.addText("（シェア5.5%）", { x: 5.45, y: 1.9, w: 2, h: 0.25, fontSize: 11, color: C.sub, fontFace: F });
+s7.addText("48件 / 6.0億円", { x: 5.45, y: 1.5, w: 3.5, h: 0.4, fontSize: 22, bold: true, color: C.main, fontFace: F });
+s7.addText("（シェア3.8%）", { x: 5.45, y: 1.9, w: 2, h: 0.25, fontSize: 11, color: C.sub, fontFace: F });
 
 const nttDetail = [
   [hdr("企業",{fontSize:9}), hdr("件数",{fontSize:9}), hdr("金額",{fontSize:9}), hdr("得意領域",{fontSize:9})],
-  [cellL("NTTデータ",{fontSize:9,bold:true}), cell("17件",{fontSize:9}), cell("8.9億",{fontSize:9}), cellL("国機関の大型案件",{fontSize:9})],
-  [cellL("NTT東日本",{fontSize:9,bold:true}), cell("11件",{fontSize:9}), cell("1.7億",{fontSize:9}), cellL("自治体④構築",{fontSize:9})],
-  [cellL("NTTコム東海",{fontSize:9,bold:true}), cell("7件",{fontSize:9}), cell("3,011万",{fontSize:9}), cellL("愛知・三重自治体",{fontSize:9})],
-  [cellL("その他NTT",{fontSize:9}), cell("31件",{fontSize:9}), cell("3.7億",{fontSize:9}), cellL("各種",{fontSize:9})],
+  [cellL("NTT東日本",{fontSize:9,bold:true}), cell("12件",{fontSize:9}), cell("2.1億",{fontSize:9}), cellL("自治体④構築",{fontSize:9})],
+  [cellL("NTTデータ",{fontSize:9,bold:true}), cell("10件",{fontSize:9}), cell("2.0億",{fontSize:9}), cellL("国機関の大型案件",{fontSize:9})],
+  [cellL("NTTコム東海",{fontSize:9,bold:true}), cell("7件",{fontSize:9}), cell("3,012万",{fontSize:9}), cellL("愛知・三重自治体",{fontSize:9})],
+  [cellL("その他NTT",{fontSize:9}), cell("19件",{fontSize:9}), cell("1.9億",{fontSize:9}), cellL("各種",{fontSize:9})],
 ];
 s7.addTable(nttDetail, {
   x: 5.45, y: 2.15, w: 3.8, h: 1.0,
@@ -441,7 +441,7 @@ s8.addText("モニタリング", {
 s8.addShape(pres.ShapeType.rect, { x: chX1 + 0.15, y: 1.95, w: 2.6, h: 0.015, fill: { color: C.border } });
 s8.addText(
   "• 公募案件の週次モニタリング\n" +
-  "• 全公共セクター対象\n  （自治体+国+独法 33件が応札可能）\n" +
+  "• 全公共セクター対象\n  （自治体+国+独法 30件が応札可能）\n" +
   "• ~49%が1社応札\n  → 応札するだけで勝てる\n" +
   "• 対象: ④構築・⑤運用",
   { x: chX1 + 0.15, y: 2.0, w: 2.6, h: 1.3, fontSize: 9, color: C.text, fontFace: F, lineSpacing: 14, valign: "top" }
