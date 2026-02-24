@@ -164,7 +164,9 @@
       "WebFetch(domain:investor-kzo.com)",
       "Bash(xargs:*)",
       "Bash(awk:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(claude mcp:*)",
+      "Bash(npx:*)"
     ]
   }
 }
