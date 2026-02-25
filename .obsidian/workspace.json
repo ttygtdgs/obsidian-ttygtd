@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ミーティング論点整理",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -217,8 +217,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "e2f3da92e77874f0",
+  "active": "d1727ce017af2932",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/HakuhodoMedical/技術説明書.md",
+    "05_Output/Projects/@Active/HakuhodoMedical",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/~$FY2026-公共セクター生成AI案件-フェーズ別見通し.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/tools/nyusatsu-king-slack-notifier/TODO-playwright-test.md",
@@ -249,7 +251,6 @@
     "03_Input",
     "00_Memo/アプリアイデアメモ.md",
     "00_Memo/colab-cursor-test.ipynb",
-    "00_Memo",
     "01_Inbox/アプリアイデアメモ.md",
     "04_Memory/AI/Tools/reference-ai-tools-comparison.md",
     "99_Archive/2025/hot-topic-cursor-update.md",
