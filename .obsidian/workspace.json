@@ -11,10 +11,24 @@
             "id": "800215187130bbc0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/18-長野県-生成AI公募-分析メモ.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "新規タブ"
+              "title": "18-長野県-生成AI公募-分析メモ"
             }
           }
         ]
@@ -49,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "長野県-生成AI公募-分析メモ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
