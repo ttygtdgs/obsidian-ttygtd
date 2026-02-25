@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "0bde2db945e0ede0",
+        "id": "72ee937a1f78618f",
         "type": "tabs",
         "children": [
           {
-            "id": "e2f3da92e77874f0",
+            "id": "800215187130bbc0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/17-施策1-ミーティング論点整理-20260225.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "17-施策1-ミーティング論点整理-20260225"
+              "title": "新規タブ"
             }
           }
         ]
@@ -217,8 +203,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d1727ce017af2932",
+  "active": "800215187130bbc0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/17-施策1-ミーティング論点整理-20260225.md",
     "05_Output/Projects/@Active/HakuhodoMedical/技術説明書.md",
     "05_Output/Projects/@Active/HakuhodoMedical",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
@@ -255,7 +242,6 @@
     "04_Memory/AI/Tools/reference-ai-tools-comparison.md",
     "99_Archive/2025/hot-topic-cursor-update.md",
     "99_Archive/2025/hot-topic-claude-sonnet4.md",
-    "99_Archive/2025/this-month-goals.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_dehydration.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_coughing.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day06_nasal_discharge.png",
