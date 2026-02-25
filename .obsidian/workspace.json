@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
+                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/17-施策1-ミーティング論点整理-20260225.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "瀬戸内国際芸術祭2025_データ分析報告書"
+              "title": "17-施策1-ミーティング論点整理-20260225"
             }
           }
         ]
@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "瀬戸内",
+                "query": "ミーティング論点整理",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -219,6 +219,7 @@
   },
   "active": "e2f3da92e77874f0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/02-materials/~$FY2026-公共セクター生成AI案件-フェーズ別見通し.pptx",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/tools/nyusatsu-king-slack-notifier/TODO-playwright-test.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/tools/nyusatsu-king-slack-notifier/README.md",
@@ -230,7 +231,6 @@
     "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
     "05_Output/Projects/@Active/NTTDX-Shinshu-Sandbox/2026-02-信州型サンドボックス事業-参入分析.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
-    "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md",
     "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale",
     "02_Daily/2026-02-23-Daily.md",
