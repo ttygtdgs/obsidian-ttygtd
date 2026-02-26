@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/18-長野県-生成AI公募-分析メモ.md",
+                "file": "05_Output/Projects/@Active/Matsuo-Institute/01-planning/ファミリーコーポレーション-調査レポート.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "18-長野県-生成AI公募-分析メモ"
+              "title": "ファミリーコーポレーション-調査レポート"
             }
           }
         ]
@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "長野県-生成AI公募-分析メモ",
+                "query": "ファミリーコーポレーション",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -217,8 +217,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d1727ce017af2932",
+  "active": "800215187130bbc0",
   "lastOpenFiles": [
+    "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
+    "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/18-長野県-生成AI公募-分析メモ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/19-自治体案件-提案方針整理-壁打ちメモ.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/17-施策1-ミーティング論点整理-20260225.md",
     "05_Output/Projects/@Active/HakuhodoMedical/技術説明書.md",
@@ -232,7 +234,6 @@
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/tools",
     "05_Output/Projects/@Active/SchemeVerge-Setouchi-Triennale/瀬戸内国際芸術祭2025_データ分析報告書.md.tmp.89954.1771902428434",
     "05_Output/Projects/@Active/Matsuo-Institute/02-materials/不動産DX-PropTech-論文サーベイ.md",
-    "05_Output/Projects/@Active/Matsuo-Institute/00-プロジェクト概要.md",
     "05_Output/Projects/@Active/NTTDX-Shinshu-Sandbox/2026-02-信州型サンドボックス事業-参入分析.md",
     "05_Output/Projects/@Active/NTTDX-Customer-Expansion-Mission/09-自治体生成AI案件-市場調査レポート.md",
     "node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
@@ -255,7 +256,6 @@
     "00_Memo/colab-cursor-test.ipynb",
     "01_Inbox/アプリアイデアメモ.md",
     "04_Memory/AI/Tools/reference-ai-tools-comparison.md",
-    "99_Archive/2025/hot-topic-cursor-update.md",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_dehydration.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day07_coughing.png",
     "05_Output/Projects/@Active/Kyoritsu-Seiyaku-DX/demo-data/images/C-008_day06_nasal_discharge.png",
