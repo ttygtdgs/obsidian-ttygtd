@@ -172,7 +172,11 @@
       "mcp__playwright__browser_click",
       "mcp__playwright__browser_fill_form",
       "mcp__playwright__browser_wait_for",
-      "WebFetch(domain:cloud.nttsmc.com)"
+      "WebFetch(domain:cloud.nttsmc.com)",
+      "WebFetch(domain:www.pref.nagano.lg.jp)",
+      "Bash(for i in 02 03 04 05 06 07 08 09 10)",
+      "Bash(do curl -sL -o \"/tmp/nagano-dx-$i.pdf\" \"https://www.pref.nagano.lg.jp/dx-promo/documents/$i.pdf\")",
+      "Bash(git restore:*)"
     ]
   }
 }
